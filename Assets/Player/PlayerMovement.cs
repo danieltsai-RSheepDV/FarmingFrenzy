@@ -7,7 +7,11 @@ public class PlayerMovement : MonoBehaviour
     const float SMALL_NUMBER = 0.1f;
     
     [SerializeField] public InputActionAsset PI;
+    private InputAction useAction;
     private InputAction moveAction;
+    private InputAction mouseAction;
+
+    [SerializeField] private SpriteRenderer sp;
 
     [SerializeField] public float speed;
     [SerializeField] public float accel;
@@ -15,13 +19,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float velPower;
     
     private Rigidbody2D rb;
+    private Camera cam;
 
     private void Start()
     {
         moveAction = PI.FindAction("Move");
+        useAction = PI.FindAction("Use");
+        mouseAction = PI.FindAction("Mouse");
+        
         PI.Enable();
         
         rb = GetComponent<Rigidbody2D>();
+        cam = Camera.main;
     }
 
     private void OnDestroy()
@@ -31,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        SetVelocity(moveAction.ReadValue<Vector2>() * speed);
+        SetVelocity(moveAction.ReadValue<Vector2>() * (useAction.inProgress ? 0.5f : 1f) * speed);
+        sp.flipX = cam.ScreenToWorldPoint(mouseAction.ReadValue<Vector2>()).x > transform.position.x;
     }
 
     private void SetVelocity(Vector2 velocity)
