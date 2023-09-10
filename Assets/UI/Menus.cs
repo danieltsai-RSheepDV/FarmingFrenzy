@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Menus : MonoBehaviour
 {
+    [SerializeField] string mainMenuName;
     [SerializeField] string gameName;
     [SerializeField] string settingsName = "Settings";
     GameObject settingsPanel;
@@ -50,6 +51,11 @@ public class Menus : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(gameName);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(mainMenuName);
     }
 
     public void ToggleSettings()

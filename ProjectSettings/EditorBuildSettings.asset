@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Title Screen/Title Screen.unity
     guid: 6148cd5b6ac0e1f4293b27cd2ff4fb10
+  - enabled: 1
+    path: Assets/UI/Game UI/Game UI.unity
+    guid: 00cb99ab60b9dd94d800dd8c52408b9e
   m_configObjects: {}

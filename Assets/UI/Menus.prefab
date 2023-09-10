@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576cc28895db1024794b3233d9443cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameName: 
+  mainMenuName: Title Screen
+  gameName: Game UI
   settingsName: Settings
   mixer: {fileID: 24100000, guid: 51e8a7d981d60cf4c8dadc18dd9926f2, type: 2}
   musicSlider: {fileID: 0}
@@ -60,7 +61,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7105425255973446932, guid: 51e8a7d981d60cf4c8dadc18dd9926f2, type: 2}
-  m_audioClip: {fileID: 8300000, guid: dff6663914151f842bd005428046d89d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 83bb01e77e6af4743a6b0da67d0ed7fe, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
