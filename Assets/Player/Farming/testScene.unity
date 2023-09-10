@@ -2619,6 +2619,34 @@ PrefabInstance:
       propertyPath: tm
       value: 
       objectReference: {fileID: 1699981092}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: progressTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TileChanger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2663,7 +2691,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farming Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8423243624835768310, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3042,8 +3071,8 @@ Tilemap:
   - first: {x: -1, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 9
+      m_TileIndex: 9
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3052,8 +3081,8 @@ Tilemap:
   - first: {x: 0, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 9
+      m_TileIndex: 9
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3607,10 +3636,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 60
+  - m_RefCount: 58
     m_Data: {fileID: 11400000, guid: 7c6efb4f6d93a634096c77df6fcf35cd, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: 020821dfb97915d4b969f8ac858e6b00, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -3628,9 +3657,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 60
+  - m_RefCount: 2
+    m_Data: {fileID: -949430292, guid: 45fee9b725b95be48a7f645b42e6c501, type: 3}
+  - m_RefCount: 58
     m_Data: {fileID: 2125890935, guid: 45fee9b725b95be48a7f645b42e6c501, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 60

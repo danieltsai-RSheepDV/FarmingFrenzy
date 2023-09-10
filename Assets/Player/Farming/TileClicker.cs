@@ -10,6 +10,7 @@ public class TileClicker : MonoBehaviour
     private InputAction mouseAction;
 
     [SerializeField] private Tilemap tm;
+    [SerializeField] private Tilemap tm2;
     [SerializeField] private GameObject cursor;
     private SpriteRenderer cursorSp;
 
@@ -19,6 +20,14 @@ public class TileClicker : MonoBehaviour
     public UnityEvent<TileBase> tileClicked;
 
     private Camera cam;
+
+    public Tile tilled;
+
+    public Tile seededPotato;
+
+    public Tile grownPotato;
+
+    private Vector3 tilePos;
     
     // Start is called before the first frame update
     void Start()
@@ -37,7 +46,7 @@ public class TileClicker : MonoBehaviour
         Vector3 mousePos = cam.ScreenToWorldPoint(mouseAction.ReadValue<Vector2>());
         mousePos.z = 0;
         
-        Vector3 tilePos = WorldToTilePos(mousePos);
+        tilePos = WorldToTilePos(mousePos);
 
         cursor.transform.position = TileToWorldPos(tilePos);
         
@@ -48,6 +57,7 @@ public class TileClicker : MonoBehaviour
         if (useAction.triggered && inRange)
         {
             tileClicked.Invoke(tm.GetTile(Vector3Int.FloorToInt(tilePos)));
+            //printTile(tm.GetTile(Vector3Int.FloorToInt(tilePos)));
         }
     }
 
@@ -64,5 +74,24 @@ public class TileClicker : MonoBehaviour
     public void printTile(TileBase t)
     {
         Debug.Log(t);
+    }
+
+    public void progressTile(TileBase tb){
+        Debug.Log("hi");
+
+        TileBase tb2 = tm2.GetTile(Vector3Int.FloorToInt(tilePos));
+        
+        Debug.Log(tb2.name);
+        if(tb.name == "FarmTileset_8"){
+            tm.SetTile(Vector3Int.FloorToInt(tilePos), tilled);
+            Debug.Log("untilled");
+            
+        }else if(tm2.GetTile(Vector3Int.FloorToInt(tilePos)).name == "FarmTileset_4"){
+            Debug.Log("baby potato");
+            tm2.SetTile(Vector3Int.FloorToInt(tilePos), grownPotato);
+        }else if(tb.name == "FarmTileset_7"){
+            Debug.Log("tilled");
+            tm2.SetTile(Vector3Int.FloorToInt(tilePos), seededPotato);
+        }
     }
 }
