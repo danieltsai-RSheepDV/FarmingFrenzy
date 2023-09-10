@@ -17,16 +17,16 @@ public class cropHH : MonoBehaviour
     }
 }
 
-/*
+
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.VFX;
 
-namespace HappyHarvest
+public class cropHH : MonoBehaviour
 {
-    /// <summary>
+    // <summary>
     /// Class used to designated a crop on the map. Store all the stage of growth, time to grow etc.
-    /// </summary>
+    // </summary>
     [CreateAssetMenu(fileName = "Crop", menuName = "2D Farming/Crop")]
     public class Crop : ScriptableObject, IDatabaseEntry
     {
@@ -35,21 +35,21 @@ namespace HappyHarvest
         public string UniqueID = "";
         
         public TileBase[] GrowthStagesTiles;
-
-        public Product Produce;
         
         public float GrowthTime = 1.0f;
-        public int NumberOfHarvest = 1;
-        public int StageAfterHarvest = 1;
-        public int ProductPerHarvest = 1;
-        public float DryDeathTimer = 30.0f;
+        public int StageBeforeHarvest = 1;
         public VisualEffect HarvestEffect;
+
+        public bool isWatered = 0;
+
+        public void Grow(){
+            StageBeforeHarvest += isWatered;
+        }
 
         public int GetGrowthStage(float growRatio)
         {
-            return Mathf.FloorToInt(growRatio * (GrowthStagesTiles.Length-1));
+            return StageBeforeHarvest;
         }
     }
 }
 
-*/
