@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     private Camera cam;
+    private Animator anim;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
+        anim = GetComponent<Animator>();
     }
 
     private void OnDestroy()
@@ -40,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        SetVelocity(moveAction.ReadValue<Vector2>() * (useAction.inProgress ? 0.5f : 1f) * speed);
+        Vector3 moveDir = moveAction.ReadValue<Vector2>();
+        anim.SetBool("Walking", moveDir.magnitude > SMALL_NUMBER);
+        SetVelocity(moveDir * (useAction.inProgress ? 0.5f : 1f) * speed);
         sp.flipX = cam.ScreenToWorldPoint(mouseAction.ReadValue<Vector2>()).x > transform.position.x;
     }
 

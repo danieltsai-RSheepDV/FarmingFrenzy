@@ -14,6 +14,7 @@ public class SprayController : MonoBehaviour
     [SerializeField] public float sprayDistance;
 
     private Camera cam;
+    private Animator anim;
     
     private ParticleSystem ps;
     public List<ParticleCollisionEvent> collisionEvents;
@@ -25,6 +26,7 @@ public class SprayController : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
+        anim = GetComponentInParent<Animator>();
         
         ps = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
@@ -47,6 +49,8 @@ public class SprayController : MonoBehaviour
         
         transform.eulerAngles = new Vector3(0, 0, Vector3.SignedAngle(Vector3.up, mouseDir, Vector3.forward));
 
+        anim.SetBool("Spraying", useAction.inProgress);
+        
         if (useAction.inProgress && ps.isStopped)
         {
             ps.Play();
