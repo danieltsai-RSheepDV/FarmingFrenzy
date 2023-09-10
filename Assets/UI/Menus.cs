@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,12 +33,15 @@ public class Menus : MonoBehaviour
         ToggleSettings();
 
         // retrieve values from playerprefs across scenes
-        musicVolume = PlayerPrefs.GetFloat(MIXER_MUSIC);
-        sfxVolume = PlayerPrefs.GetFloat(MIXER_SFX);
+        float value;
+        mixer.GetFloat(MIXER_MUSIC, out value);
+        musicVolume = Mathf.Pow(10, value / 20);
+
+        mixer.GetFloat(MIXER_SFX, out value);
+        sfxVolume = Mathf.Pow(10, value / 20);
+
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
-        mixer.SetFloat(MIXER_MUSIC, musicVolume);
-        mixer.SetFloat(MIXER_SFX, sfxVolume);
 
         //fullscreen on / off
         Screen.fullScreen = fullScreenOff;
@@ -52,6 +56,7 @@ public class Menus : MonoBehaviour
     {
         settingsOpen = !settingsOpen;
         settingsPanel.SetActive(settingsOpen);
+        Time.timeScale = settingsOpen ? 1f : 0f; // turn on or off time
     }
 
     public void QuitGame()
@@ -69,14 +74,12 @@ public class Menus : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Log10(volume) * 20;
-        PlayerPrefs.SetFloat(MIXER_MUSIC, musicVolume);
         mixer.SetFloat(MIXER_MUSIC, musicVolume);
     }
 
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Log10(volume) * 20;
-        PlayerPrefs.SetFloat(MIXER_SFX, sfxVolume);
         mixer.SetFloat(MIXER_SFX, sfxVolume);
     }
 }
