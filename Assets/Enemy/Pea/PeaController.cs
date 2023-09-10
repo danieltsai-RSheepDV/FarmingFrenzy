@@ -38,6 +38,9 @@ public class PeaController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         player = FindObjectOfType<PlayerMovement>().gameObject;
+        house = GameObject.Find("House");
+
+        target = house;
     }
 
     // Update is called once per frame
@@ -46,24 +49,25 @@ public class PeaController : MonoBehaviour
         if(target != null){
             sp.flipX = target.transform.position.x > transform.position.x;
         }
+        
+        if (target == house)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
+            {
+                target = player;
+            }
+        }
+        else if(target == player)
+        {
+            if (Vector3.Distance(player.transform.position, transform.position) > detectionDistance + 3)
+            {
+                target = house;
+            }
+        }
+        if (target == null) return;
 
         if (curState == States.CHASING)
         {
-            if (target == house)
-            {
-                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
-                {
-                    target = player;
-                }
-            }
-            else if(target == player)
-            {
-                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance + 3)
-                {
-                    target = house;
-                }
-            }
-            if (target == null) return;
             
             Vector3 targetDir = (target.transform.position - transform.position).normalized;
             SetVelocity(targetDir * speed);
