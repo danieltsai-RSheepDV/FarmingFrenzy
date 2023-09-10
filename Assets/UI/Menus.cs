@@ -16,15 +16,30 @@ public class Menus : MonoBehaviour
     // audio mixer
     // https://www.youtube.com/watch?v=pbuJUaO-wpY&ab_channel=KapKoder
     [SerializeField] AudioMixer mixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+    float musicVolume = 1f;
+    float sfxVolume = 1f;
+
     const string MIXER_MUSIC = "MusicParam";
     const string MIXER_SFX = "SFXParam";
 
     // Start is called before the first frame update
     void Start()
     {
+        // settings off
         settingsPanel = GameObject.FindGameObjectWithTag(settingsName);
         ToggleSettings();
 
+        // retrieve values from playerprefs across scenes
+        musicVolume = PlayerPrefs.GetFloat(MIXER_MUSIC);
+        sfxVolume = PlayerPrefs.GetFloat(MIXER_SFX);
+        musicSlider.value = musicVolume;
+        sfxSlider.value = sfxVolume;
+        mixer.SetFloat(MIXER_MUSIC, musicVolume);
+        mixer.SetFloat(MIXER_SFX, sfxVolume);
+
+        //fullscreen on / off
         Screen.fullScreen = fullScreenOff;
     }
 
@@ -53,11 +68,15 @@ public class Menus : MonoBehaviour
     // audio
     public void SetMusicVolume(float volume)
     {
-        mixer.SetFloat(MIXER_MUSIC, Mathf.Log10(volume) * 20);
+        musicVolume = Mathf.Log10(volume) * 20;
+        PlayerPrefs.SetFloat(MIXER_MUSIC, musicVolume);
+        mixer.SetFloat(MIXER_MUSIC, musicVolume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        mixer.SetFloat(MIXER_SFX, Mathf.Log10(volume) * 20);
+        sfxVolume = Mathf.Log10(volume) * 20;
+        PlayerPrefs.SetFloat(MIXER_SFX, sfxVolume);
+        mixer.SetFloat(MIXER_SFX, sfxVolume);
     }
 }
