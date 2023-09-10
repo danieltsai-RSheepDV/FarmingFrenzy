@@ -444,18 +444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4761871183094662007, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
-      propertyPath: sprayDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874248955230665164, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4874248955230665164, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5831202675177277740, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
