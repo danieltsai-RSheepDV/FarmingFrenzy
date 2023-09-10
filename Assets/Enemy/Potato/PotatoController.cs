@@ -49,6 +49,9 @@ public class PotatoController : MonoBehaviour
 
         timer = pauseTime;
         player = FindObjectOfType<PlayerMovement>().gameObject;
+        house = GameObject.Find("House");
+        
+        target = house;
     }
 
     // Update is called once per frame
