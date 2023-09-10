@@ -17,13 +17,14 @@ public class cropHH : MonoBehaviour
     }
 }
 
-
+/*
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.VFX;
 
 public class cropHH : MonoBehaviour
 {
+
     // <summary>
     /// Class used to designated a crop on the map. Store all the stage of growth, time to grow etc.
     // </summary>
@@ -52,4 +53,4 @@ public class cropHH : MonoBehaviour
         }
     }
 }
-
+*/
