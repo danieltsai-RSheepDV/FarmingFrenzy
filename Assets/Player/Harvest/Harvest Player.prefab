@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4761871183094662007}
   - component: {fileID: 4874248955230665164}
   - component: {fileID: 9018539938803459043}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3870,7 +3870,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 63
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4923,6 +4923,10 @@ PrefabInstance:
       value: Harvest Player
       objectReference: {fileID: 0}
     - target: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -4930,9 +4934,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ec9a8b1a062ca4f479aca51e8ae04512, type: 3}
+    - target: {fileID: 7792486412108497052, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8096613603315612147, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8432727
+      value: -13.64
       objectReference: {fileID: 0}
     - target: {fileID: 8096613603315612147, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5025,9 +5033,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0065205474, y: -0.69143176}
-  m_Size: {x: 1.0913293, y: 0.608627}
-  m_Direction: 1
+  m_Offset: {x: -0.011591911, y: -0.06350982}
+  m_Size: {x: 1.1520271, y: 1.8644779}
+  m_Direction: 0
 --- !u!114 &5046714666743066822
 MonoBehaviour:
   m_ObjectHideFlags: 0

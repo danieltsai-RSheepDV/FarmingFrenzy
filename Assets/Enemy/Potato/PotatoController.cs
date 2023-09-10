@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PotatoController : MonoBehaviour
@@ -18,6 +16,7 @@ public class PotatoController : MonoBehaviour
     [SerializeField] public SpriteRenderer sp;
     [Space] 
     [SerializeField] private float damageAmount;
+    [SerializeField] private float detectionDistance;
     [Space]
     [SerializeField] public float speed;
     [SerializeField] public float turnSpeed;
@@ -37,6 +36,9 @@ public class PotatoController : MonoBehaviour
     private float distanceTravelled;
     
     private Rigidbody2D rb;
+    private GameObject player;
+    //TODO: Replace with house
+    private GameObject house = null;
     private Animator anim;
     
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class PotatoController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         timer = pauseTime;
+        player = FindObjectOfType<PlayerMovement>().gameObject;
     }
 
     // Update is called once per frame
@@ -101,14 +104,26 @@ public class PotatoController : MonoBehaviour
                 return;
             }
             
-            target = FindObjectOfType<PlayerMovement>().gameObject;
-            if (target)
+            if (target == house)
             {
-                curState = States.ROLLING;
-                anim.SetBool("Rolling", true);
-                
-                direction = (target.transform.position - transform.position).normalized;
+                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
+                {
+                    target = player;
+                }
             }
+            else if(target == player)
+            {
+                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance + 3)
+                {
+                    target = house;
+                }
+            }
+            if (target == null) return;
+            
+            curState = States.ROLLING;
+            anim.SetBool("Rolling", true);
+                
+            direction = (target.transform.position - transform.position).normalized;
         }
     }
 
@@ -128,13 +143,6 @@ public class PotatoController : MonoBehaviour
         force.y = Mathf.Pow(Mathf.Abs(yDif) * yAccel, velPower) * Mathf.Sign(yDif);
     
         rb.AddForce(force);
-    }
-
-    private Vector3 Perpendicular(Vector3 a, Vector3 b)
-    {
-        float dot = Vector3.Dot(a, b);
-        Vector3 dotVector = dot * b.normalized;
-        return a - dotVector;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
