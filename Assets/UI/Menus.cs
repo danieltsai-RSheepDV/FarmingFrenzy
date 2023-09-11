@@ -62,7 +62,7 @@ public class Menus : MonoBehaviour
     {
         settingsOpen = !settingsOpen;
         settingsPanel.SetActive(settingsOpen);
-        Time.timeScale = settingsOpen ? 1f : 0f; // turn on or off time
+        Time.timeScale = settingsOpen ? 0f : 1f; // turn on or off time
     }
 
     public void QuitGame()

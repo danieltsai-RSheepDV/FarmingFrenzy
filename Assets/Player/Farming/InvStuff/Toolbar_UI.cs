@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Toolbar_UI : MonoBehaviour
 {
-    [SerializeField] private List<placeholder> toolbarSlots = new List<placeholder>();
+    [SerializeField] private List<GameObject> toolbarSlots = new List<GameObject>();
 
-    private placeholder selectedSlot;
+    private GameObject selectedSlot;
 
     private void Start(){
         SelectSlot(0);
