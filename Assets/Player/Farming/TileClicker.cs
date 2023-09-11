@@ -12,7 +12,7 @@ public class TileClicker : MonoBehaviour
     [SerializeField] private GameObject cursor;
     private SpriteRenderer cursorSp;
 
-    [SerializeField] private float cellSize = 2;
+    private static float cellSize = 2;
     [SerializeField] private float range;
 
     public UnityEvent<Vector3Int> tileClicked;
@@ -50,12 +50,12 @@ public class TileClicker : MonoBehaviour
         }
     }
 
-    private Vector3Int WorldToTilePos(Vector3 position)
+    public static Vector3Int WorldToTilePos(Vector3 position)
     {
         return new Vector3Int((int) Mathf.Floor(position.x / cellSize), (int) Mathf.Floor(position.y / cellSize), 0);
     }
 
-    private Vector3 TileToWorldPos(Vector3 position)
+    public static Vector3 TileToWorldPos(Vector3 position)
     {
         return position * cellSize + new Vector3(cellSize/2f, cellSize/2f, 0);
     }
