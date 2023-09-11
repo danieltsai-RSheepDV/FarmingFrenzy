@@ -149,9 +149,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8423243624835768310}
-    - targetCorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2295598935087844275}
   m_SourcePrefab: {fileID: 100100000, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
 --- !u!4 &4606394145583090223 stripped
@@ -164,18 +161,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
   m_PrefabInstance: {fileID: 5742582370177102812}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8423243624835768310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421704105902220425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1736150de4df714f9335927169bb154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2295598935087844275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,9 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PI: {fileID: -944628639613478452, guid: 6d945a63a8f78a64489d256e03c4c544, type: 3}
-  tm: {fileID: 0}
   cursor: {fileID: 2391592136500255226}
-  cellSize: 2
   range: 3
   tileClicked:
     m_PersistentCalls:

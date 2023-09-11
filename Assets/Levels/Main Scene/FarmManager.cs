@@ -19,16 +19,10 @@ public class FarmManager : MonoBehaviour
 
     private List<TileInformation> tiles = new();
 
-    public void UpdateTileInformation(Vector3Int position)
+    public void TillSoil(Vector3Int position)
     {
         TileInformation ti;
-        if (GetTile(position, out ti))
-        {
-            ti.watered = true;
-            
-            UpdateTileMap(position);
-        }
-        else
+        if (!GetTile(position, out ti))
         {
             if (!dirt.HasTile(position)) return;
             if (dirt.GetTile(position) != untilledTile) return;
@@ -40,9 +34,12 @@ public class FarmManager : MonoBehaviour
             UpdateTileMap(position);
         }
     }
+    
 
-    private void UpdateTileMap()
+    public void UpdateTileMap()
     {
+        List<TileInformation> toDelete = new();
+        
         foreach (var ti in tiles)
         {
             if (ti.watered)
@@ -66,10 +63,17 @@ public class FarmManager : MonoBehaviour
             }
             
             UpdateTileMap(ti.position);
+            if(ti.finished) toDelete.Add(ti);
+        }
+
+        foreach (var VARIABLE in toDelete)
+        {
+            tiles.Remove(VARIABLE);
         }
     }
+    
 
-    private void UpdateTileMap(Vector3Int position)
+    public void UpdateTileMap(Vector3Int position)
     {
         TileInformation ti;
         GetTile(position, out ti);
@@ -78,7 +82,6 @@ public class FarmManager : MonoBehaviour
         {
             crops.SetTile(position, null);
             dirt.SetTile(position, untilledTile);
-            tiles.Remove(ti);
             return;
         }
         
@@ -115,7 +118,7 @@ public class FarmManager : MonoBehaviour
         }
     }
 
-    private bool GetTile(Vector3Int position, out TileInformation t)
+    public bool GetTile(Vector3Int position, out TileInformation t)
     {
         t = tiles.Find(tile => tile.position == position);
         return t != null;

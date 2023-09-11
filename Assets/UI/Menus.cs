@@ -10,8 +10,7 @@ public class Menus : MonoBehaviour
 {
     [SerializeField] string mainMenuName;
     [SerializeField] string gameName;
-    [SerializeField] string settingsName = "Settings";
-    GameObject settingsPanel;
+    [SerializeField] GameObject settingsPanel;
     bool settingsOpen = true; // settings
     bool fullScreenOff = false; // controls fullscreen toggle
 
@@ -30,7 +29,7 @@ public class Menus : MonoBehaviour
     void Start()
     {
         // settings off
-        settingsPanel = GameObject.FindGameObjectWithTag(settingsName);
+        if(settingsPanel == null) settingsPanel = GameObject.FindGameObjectWithTag("Settings");
         ToggleSettings();
 
         // retrieve values from playerprefs across scenes

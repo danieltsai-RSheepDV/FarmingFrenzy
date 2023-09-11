@@ -969,6 +969,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5694857383154443860, guid: d9ba190f89ac1c9469b2026d9238afed, type: 3}
+      propertyPath: gameName
+      value: FarmingScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694857383154443860, guid: d9ba190f89ac1c9469b2026d9238afed, type: 3}
       propertyPath: sfxSlider
       value: 
       objectReference: {fileID: 1511807720}

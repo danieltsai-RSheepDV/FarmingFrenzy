@@ -3,7 +3,18 @@ guid: 6332e9d63154cb14788f4194b9b97af3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dirt: {instanceID: 0}
+  - crops: {instanceID: 0}
+  - untilledTile: {fileID: 11400000, guid: 7c6efb4f6d93a634096c77df6fcf35cd, type: 2}
+  - tilledTile: {fileID: 11400000, guid: 020821dfb97915d4b969f8ac858e6b00, type: 2}
+  - wateredTilledTile: {fileID: 11400000, guid: 6f7a573c4cfe1824b9bc07deb4d02245, type: 2}
+  - stage1PotatoTile: {fileID: 11400000, guid: 0d67288380c796d489bbf00f66745fc6, type: 2}
+  - stage2PotatoTile: {fileID: 11400000, guid: f59089b8a8aeeb949b6782b5b51b19bc, type: 2}
+  - stage1PeaTile: {fileID: 11400000, guid: fd640019cd485d0429bc28737df52804, type: 2}
+  - stage2PeaTile: {fileID: 11400000, guid: 8b8718f9579636e4fb1ba63d3a229be3, type: 2}
+  - pea: {fileID: 3828882189639188319, guid: 739d968c37273c8419bbb6c67c653830, type: 3}
+  - potato: {fileID: 211192878973097415, guid: f9a5cc28a9a84e0468d67ad8c5af18d9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
