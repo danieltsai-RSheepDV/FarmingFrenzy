@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
-    enum Item
+    public enum Item
     {
         Rake,
         Can,
@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
         Fence,
         Path
     }
-    Item currTool = Item.Rake;
+    public Item currTool = Item.Rake;
 
     public void OnItem1()
     {
