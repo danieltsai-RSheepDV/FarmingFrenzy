@@ -1,20 +1,123 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.WSA;
+using UnityEngine.Tilemaps;
 
 public class FarmManager : MonoBehaviour
 {
-    private List<TileInformation> tiles;
+    [SerializeField] private Tilemap dirt;
+    [SerializeField] private Tilemap crops;
+    [SerializeField] private TileBase untilledTile;
+    [SerializeField] private TileBase tilledTile;
+    [SerializeField] private TileBase wateredTilledTile;
+    [SerializeField] private TileBase stage1PotatoTile;
+    [SerializeField] private TileBase stage2PotatoTile;
+    [SerializeField] private TileBase stage1PeaTile;
+    [SerializeField] private TileBase stage2PeaTile;
+    [SerializeField] private GameObject pea;
+    [SerializeField] private GameObject potato;
 
-    public void UpdateTile(Vector3Int position)
+    private List<TileInformation> tiles = new();
+
+    public void UpdateTileInformation(Vector3Int position)
     {
+        TileInformation ti;
+        if (GetTile(position, out ti))
+        {
+            ti.watered = true;
+            
+            UpdateTileMap(position);
+        }
+        else
+        {
+            if (!dirt.HasTile(position)) return;
+            if (dirt.GetTile(position) != untilledTile) return;
+            
+            ti = new TileInformation(position);
+            ti.tilled = true;
+            tiles.Add(ti);
+
+            UpdateTileMap(position);
+        }
+    }
+
+    private void UpdateTileMap()
+    {
+        foreach (var ti in tiles)
+        {
+            if (ti.watered)
+            {
+                ti.watered = false;
+                ti.growthStage++;
+
+                if (ti.type == TileInformation.Types.POTATO && ti.growthStage == 2)
+                {
+                    ti.finished = true;
+                    
+                    GameObject ob = Instantiate(potato);
+                    ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                }else if (ti.type == TileInformation.Types.PEA && ti.growthStage == 3)
+                {
+                    ti.finished = true;
+                    
+                    GameObject ob = Instantiate(pea);
+                    ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                }
+            }
+            
+            UpdateTileMap(ti.position);
+        }
+    }
+
+    private void UpdateTileMap(Vector3Int position)
+    {
+        TileInformation ti;
+        GetTile(position, out ti);
+
+        if (ti.finished)
+        {
+            crops.SetTile(position, null);
+            dirt.SetTile(position, untilledTile);
+            tiles.Remove(ti);
+            return;
+        }
         
+        if (ti.tilled)
+        {
+            if (ti.watered)
+            {
+                dirt.SetTile(position, wateredTilledTile);
+            }
+            else
+            {
+                dirt.SetTile(position, tilledTile);
+            }
+        }
+
+        if (ti.type == TileInformation.Types.POTATO)
+        {
+            if (ti.growthStage == 0)
+            {
+                crops.SetTile(position, stage1PotatoTile);
+            }else if (ti.growthStage == 1)
+            {
+                crops.SetTile(position, stage2PotatoTile);
+            }
+        }else if (ti.type == TileInformation.Types.PEA)
+        {
+            if (ti.growthStage == 0)
+            {
+                crops.SetTile(position, stage1PeaTile);
+            }else if (ti.growthStage == 2)
+            {
+                crops.SetTile(position, stage2PeaTile);
+            }
+        }
     }
 
     private bool GetTile(Vector3Int position, out TileInformation t)
     {
         t = tiles.Find(tile => tile.position == position);
-        return t == null;
+        return t != null;
     }
 }
