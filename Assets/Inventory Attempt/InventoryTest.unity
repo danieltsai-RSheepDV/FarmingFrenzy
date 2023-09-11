@@ -2536,15 +2536,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114772408395407092, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 125.5957
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358466971600872122, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358466971600872122, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7494700439815918271, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2648,15 +2648,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073106863146610843, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 125.5957
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8356757243524586198, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8356757243524586198, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8769794955367911908, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_Name
@@ -2664,7 +2664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769794955367911908, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8992283356311136520, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3651,6 +3651,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   houseHealth: {fileID: 1299757894}
   house: {fileID: 4017814}
+  invItems:
+  - {fileID: 385594087}
+  - {fileID: 247027871}
+  - {fileID: 172660273}
+  - {fileID: 1480911883}
+  - {fileID: 398335993}
+  - {fileID: 274554753}
+  invManager: {fileID: 1016746149}
 --- !u!4 &1016746148
 Transform:
   m_ObjectHideFlags: 0
@@ -3678,6 +3686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1484b8a2ec5173489295c9e0f49eb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currTool: 0
 --- !u!114 &1016746150
 MonoBehaviour:
   m_ObjectHideFlags: 0
