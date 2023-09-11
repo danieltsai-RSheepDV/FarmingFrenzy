@@ -6982,30 +6982,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 270662859885554000, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: fm
       value: 
-      objectReference: {fileID: 1543698340}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UseItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FarmingActionController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 769792385}
+    - target: {fileID: 270662859885554000, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: im
+      value: 
+      objectReference: {fileID: 1016746149}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.33
@@ -7053,30 +7037,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7421704105902220425, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1543698340}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
---- !u!1 &1543698339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7421704105902220425, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-  m_PrefabInstance: {fileID: 1543698338}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1543698340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543698339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53e48a89c58f5f419a90dfb24226d2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  im: {fileID: 1016746149}
-  fm: {fileID: 769792385}
 --- !u!1 &1544802932
 GameObject:
   m_ObjectHideFlags: 0
