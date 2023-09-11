@@ -2620,13 +2620,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1699981092}
     - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tm2
+      value: 
+      objectReference: {fileID: 1547010359}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tilled
+      value: 
+      objectReference: {fileID: 11400000, guid: 020821dfb97915d4b969f8ac858e6b00, type: 2}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: grownPotato
+      value: 
+      objectReference: {fileID: 11400000, guid: f59089b8a8aeeb949b6782b5b51b19bc, type: 2}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: seededPotato
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d67288380c796d489bbf00f66745fc6, type: 2}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1855021963}
     - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2641,7 +2657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TileChanger, Assembly-CSharp
+      value: TileClicker, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3757,6 +3773,48 @@ Transform:
   - {fileID: 2106882602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855021963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+  m_PrefabInstance: {fileID: 1284145921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5fa61488b2eb944bb7503232852285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1929125591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929125592}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929125592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929125591}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.20758584, y: 0.021492876, z: 0.11830818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2106882601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,3 +4132,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1778442194}
   - {fileID: 1284145921}
+  - {fileID: 1929125592}
