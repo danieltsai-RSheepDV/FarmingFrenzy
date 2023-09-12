@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(CropDatabase))]
 public class FarmManager : MonoBehaviour
 {
     [SerializeField] private Tilemap dirt;
@@ -10,14 +12,15 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private TileBase untilledTile;
     [SerializeField] private TileBase tilledTile;
     [SerializeField] private TileBase wateredTilledTile;
-    [SerializeField] private TileBase stage1PotatoTile;
-    [SerializeField] private TileBase stage2PotatoTile;
-    [SerializeField] private TileBase stage1PeaTile;
-    [SerializeField] private TileBase stage2PeaTile;
-    [SerializeField] private GameObject pea;
-    [SerializeField] private GameObject potato;
 
     private List<TileInformation> tiles = new();
+
+    private CropDatabase CropDatabase;
+
+    private void Start()
+    {
+        CropDatabase = GetComponent<CropDatabase>();
+    }
 
     public void TillSoil(Vector3Int position)
     {
@@ -45,20 +48,19 @@ public class FarmManager : MonoBehaviour
             if (ti.watered)
             {
                 ti.watered = false;
-                ti.growthStage++;
 
-                if (ti.type == TileInformation.Types.POTATO && ti.growthStage == 2)
+                if (!String.IsNullOrEmpty(ti.cropId))
                 {
-                    ti.finished = true;
+                    ti.growthStage++;
                     
-                    GameObject ob = Instantiate(potato);
-                    ob.transform.position = TileClicker.TileToWorldPos(ti.position);
-                }else if (ti.type == TileInformation.Types.PEA && ti.growthStage == 3)
-                {
-                    ti.finished = true;
-                    
-                    GameObject ob = Instantiate(pea);
-                    ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                    CropDatabaseAsset.CropData cropData = CropDatabase[ti.cropId];
+                    if (ti.growthStage >= cropData.growthTime)
+                    {
+                        ti.finished = true;
+                        
+                        GameObject ob = Instantiate(cropData.monsterPrefab);
+                        ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                    }
                 }
             }
             
@@ -77,7 +79,8 @@ public class FarmManager : MonoBehaviour
     {
         TileInformation ti;
         GetTile(position, out ti);
-
+        
+        //Resetting
         if (ti.finished)
         {
             crops.SetTile(position, null);
@@ -85,6 +88,7 @@ public class FarmManager : MonoBehaviour
             return;
         }
         
+        //Dirt Condition
         if (ti.tilled)
         {
             if (ti.watered)
@@ -96,26 +100,24 @@ public class FarmManager : MonoBehaviour
                 dirt.SetTile(position, tilledTile);
             }
         }
-
-        if (ti.type == TileInformation.Types.POTATO)
+        
+        //Crop
+        if (String.IsNullOrEmpty(ti.cropId)) return;
+        
+        CropDatabaseAsset.CropData cropData = CropDatabase[ti.cropId];
+        TileBase tile = cropData.tiles[0].tile;
+        for (int i = 1; i < cropData.tiles.Count; i++)
         {
-            if (ti.growthStage == 0)
+            if (cropData.tiles[i].growthStage <= ti.growthStage)
             {
-                crops.SetTile(position, stage1PotatoTile);
-            }else if (ti.growthStage == 1)
-            {
-                crops.SetTile(position, stage2PotatoTile);
+                tile = cropData.tiles[i].tile;
             }
-        }else if (ti.type == TileInformation.Types.PEA)
-        {
-            if (ti.growthStage == 0)
+            else
             {
-                crops.SetTile(position, stage1PeaTile);
-            }else if (ti.growthStage == 2)
-            {
-                crops.SetTile(position, stage2PeaTile);
+                break;
             }
         }
+        crops.SetTile(position, tile);
     }
 
     public bool GetTile(Vector3Int position, out TileInformation t)

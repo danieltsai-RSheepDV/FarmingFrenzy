@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d93060003d42b0bd7c4ae1224ff58b, type: 3}
   m_Name: Item Database
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - id: Item_Potato_Seeds
+    displayName: Potato Seeds
+    icon: {fileID: 0}
+  - id: Item_Pea_Seeds
+    displayName: Pea Seeds
+    icon: {fileID: 0}
+  - id: Item_Carrot_Seeds
+    displayName: Carrot Seeds
+    icon: {fileID: 0}

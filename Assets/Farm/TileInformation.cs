@@ -6,14 +6,7 @@ using UnityEngine;
 [Serializable]
 public class TileInformation
 {
-    public enum Types
-    {
-        NONE,
-        PEA,
-        POTATO
-    }
-
-    public Types type = Types.NONE;
+    public string cropId;
     
     public Vector3Int position;
     public int growthStage = 0;

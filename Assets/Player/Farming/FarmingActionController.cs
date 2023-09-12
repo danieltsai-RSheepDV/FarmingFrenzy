@@ -32,16 +32,16 @@ public class FarmingActionController : MonoBehaviour
             return;
         }
 
-        if (ti.type != TileInformation.Types.NONE) return;
+        if (!String.IsNullOrEmpty(ti.cropId)) return;
         
         switch (im.currTool)
         {
             case InventoryManager.Item.Pea:
-                ti.type = TileInformation.Types.PEA;
+                ti.cropId = "Crop_Potato";
                 fm.UpdateTileMap(position);
                 break;
             case InventoryManager.Item.Potato:
-                ti.type = TileInformation.Types.POTATO;
+                ti.cropId = "Crop_Pea";
                 fm.UpdateTileMap(position);
                 break;
         }

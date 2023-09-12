@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a6314923d5de44796a83aa2968178c, type: 3}
+  m_Name: Crop Database Asset
+  m_EditorClassIdentifier: 
+  items:
+  - id: Crop_Potato
+    displayName: Potato
+    seedId: Item_Potato_Seeds
+    growthTime: 2
+    monsterPrefab: {fileID: 211192878973097415, guid: f9a5cc28a9a84e0468d67ad8c5af18d9, type: 3}
+    tiles:
+    - tile: {fileID: 11400000, guid: 0d67288380c796d489bbf00f66745fc6, type: 2}
+      growthStage: 0
+    - tile: {fileID: 11400000, guid: f59089b8a8aeeb949b6782b5b51b19bc, type: 2}
+      growthStage: 1
+  - id: Crop_Pea
+    displayName: Pea
+    seedId: Item_Pea_Seeds
+    growthTime: 3
+    monsterPrefab: {fileID: 3828882189639188319, guid: 739d968c37273c8419bbb6c67c653830, type: 3}
+    tiles:
+    - tile: {fileID: 11400000, guid: fd640019cd485d0429bc28737df52804, type: 2}
+      growthStage: 0
+    - tile: {fileID: 11400000, guid: 8b8718f9579636e4fb1ba63d3a229be3, type: 2}
+      growthStage: 2
