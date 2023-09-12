@@ -27,7 +27,7 @@ public class SceneChanger : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (useAction.WasPressedThisFrame() && collision.gameObject.CompareTag("Player"))
+        if (useAction.WasPressedThisFrame() && collision.gameObject == FarmingGameManager.Player)
         {
             fm.UpdateTileMap();
             daycont++;

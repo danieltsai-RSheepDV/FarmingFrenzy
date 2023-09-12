@@ -7,7 +7,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] Slider houseHealth;
     [SerializeField] Health house;
-
+    
     [SerializeField] Image[] invItems; // array of background images
     [SerializeField] InventoryManager invManager;
 

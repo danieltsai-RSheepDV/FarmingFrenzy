@@ -48,7 +48,7 @@ public class PotatoController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         timer = pauseTime;
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        player = FarmingGameManager.Player;
         house = GameObject.Find("House");
         
         target = house;
@@ -151,7 +151,7 @@ public class PotatoController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         Health h = col.gameObject.GetComponent<Health>();
-        if (h && col.gameObject.CompareTag("Player"))
+        if (h && col.gameObject == FarmingGameManager.Player)
         {
             h.Damage(damageAmount);
         }

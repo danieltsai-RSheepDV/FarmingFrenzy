@@ -37,7 +37,7 @@ public class PeaController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         
-        player = FindObjectOfType<PlayerMovement>().gameObject;
+        player = FarmingGameManager.Player;
         house = GameObject.Find("House");
 
         target = house;
