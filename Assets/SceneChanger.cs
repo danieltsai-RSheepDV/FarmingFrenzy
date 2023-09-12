@@ -19,10 +19,7 @@ public class SceneChanger : MonoBehaviour
         useAction = PI.FindAction("Use");
     }
 
-    public void ChangeScene(string s)
-    {
-        SceneManager.LoadScene(s);
-    }
+    
 
     
 }
