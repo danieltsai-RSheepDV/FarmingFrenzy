@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
     private InputAction item6Action;
 
 
-    private (string itemId, int amount)[] items = new (string itemId, int amount)[INVENTORY_SLOTS];
+    public (string itemId, int amount)[] items = new (string itemId, int amount)[INVENTORY_SLOTS];
     public int selectedSlot = 0;
     
     private ItemDatabase ItemDatabase;
