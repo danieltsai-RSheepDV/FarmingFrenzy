@@ -1,17 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(InventoryManager))]
 public class FarmingActionController : MonoBehaviour
 {
-    [SerializeField] private InventoryManager im;
-    [SerializeField] private FarmManager fm;
+    private FarmManager fm;
+    private InventoryManager im;
 
     private void Start()
     {
-        if (fm == null) fm = FindObjectOfType<FarmManager>();
+        fm = GameManager.FarmManager;
+        im.GetComponent<InventoryManager>();
     }
 
     public void UseItem(Vector3Int position)
