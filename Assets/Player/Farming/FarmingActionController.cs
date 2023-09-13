@@ -1,48 +1,48 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InventoryManager))]
 public class FarmingActionController : MonoBehaviour
 {
-    private FarmManager fm;
-    private InventoryManager im;
+    private const string WATERING_CAN = "Item_WateringCan";
+    private const string RAKE = "Item_Rake";
+    
+    private FarmManager farmManager;
+    private ItemDatabase itemDatabase;
+    private InventoryManager inventoryManager;
 
     private void Start()
     {
-        fm = GameManager.FarmManager;
-        im.GetComponent<InventoryManager>();
+        farmManager = GameManager.FarmManager;
+        inventoryManager = GetComponent<InventoryManager>();
+        itemDatabase = GameManager.ItemDatabase;
     }
 
     public void UseItem(Vector3Int position)
     {
-        if (im.currTool == InventoryManager.Item.Rake)
+        try
         {
-            fm.TillSoil(position);
-            return;
+            if (inventoryManager.GetSelectedItem() == default)
+            {
+                Debug.Log("Attempted to use nothing! Not an error, just kinda weird.");
+                return;
+            }
+            
+            ItemDatabaseAsset.ItemData itemData = itemDatabase[inventoryManager.GetSelectedItem().itemId];
+            if (itemData.tags.Contains("seed"))
+            {
+                if(farmManager.PlantSeed(itemData.id, position)) inventoryManager.RemoveItem(itemData.id);
+            }else if (itemData.id == WATERING_CAN)
+            {
+                farmManager.WaterSoil(position);
+            }else if (itemData.id == RAKE)
+            {
+                farmManager.TillSoil(position);
+            }
         }
-
-        TileInformation ti;
-        if (!fm.GetTile(position, out ti)) return;
-        
-        if (im.currTool == InventoryManager.Item.Can)
+        catch (KeyNotFoundException e)
         {
-            ti.watered = true;
-            fm.UpdateTileMap(position);
-            return;
-        }
-
-        if (!String.IsNullOrEmpty(ti.cropId)) return;
-        
-        switch (im.currTool)
-        {
-            case InventoryManager.Item.Pea:
-                ti.cropId = "Crop_Potato";
-                fm.UpdateTileMap(position);
-                break;
-            case InventoryManager.Item.Potato:
-                ti.cropId = "Crop_Pea";
-                fm.UpdateTileMap(position);
-                break;
+            Debug.LogError(e);
         }
     }
 }

@@ -22,6 +22,31 @@ public class FarmManager : MonoBehaviour
         CropDatabase = GetComponent<CropDatabase>();
     }
 
+    public bool PlantSeed(string id, Vector3Int position)
+    {
+        TileInformation ti;
+        if (!GetTile(position, out ti)) return false;
+        
+        if (dirt.HasTile(position) != tilledTile) return false;
+        
+        string cropId = CropDatabase.ToCropId(id);
+        if (cropId == null) return false;
+
+        ti.cropId = cropId;
+        UpdateTileMap(position);
+        return true;
+    }
+
+    public void WaterSoil(Vector3Int position)
+    {
+        TileInformation ti;
+        if (GetTile(position, out ti))
+        {
+            if (ti.tilled) ti.watered = true;
+            UpdateTileMap(position);
+        }
+    }
+
     public void TillSoil(Vector3Int position)
     {
         TileInformation ti;

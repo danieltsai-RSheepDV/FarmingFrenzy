@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3308622626192650385}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -994,14 +994,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2516555623933772410, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 9013175487059844143}
-    - target: {fileID: 2516555623933772410, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2736714224679549866, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -240.97
@@ -1089,10 +1081,6 @@ PrefabInstance:
     - target: {fileID: 6908212392911063293, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7494700439815918271, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleSettings
       objectReference: {fileID: 0}
     - target: {fileID: 7501905356326486738, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_Pivot.x
@@ -1212,7 +1200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8769794955367911908, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
       propertyPath: m_Name
-      value: Settings Menu
+      value: Pause Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1222,6 +1210,11 @@ PrefabInstance:
       addedObject: {fileID: 7162679613973982451}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
+--- !u!1 &3308622626192650385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8769794955367911908, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}
+  m_PrefabInstance: {fileID: 6079301716019241333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4342063361522869159 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7501905356326486738, guid: 1aaf222b30643ea4891c4649483766a7, type: 3}

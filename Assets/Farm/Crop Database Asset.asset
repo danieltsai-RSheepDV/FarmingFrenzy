@@ -15,7 +15,7 @@ MonoBehaviour:
   items:
   - id: Crop_Potato
     displayName: Potato
-    seedId: Item_Potato_Seeds
+    seedId: Item_PotatoSeeds
     growthTime: 2
     monsterPrefab: {fileID: 211192878973097415, guid: f9a5cc28a9a84e0468d67ad8c5af18d9, type: 3}
     tiles:
@@ -23,9 +23,9 @@ MonoBehaviour:
       growthStage: 0
     - tile: {fileID: 11400000, guid: f59089b8a8aeeb949b6782b5b51b19bc, type: 2}
       growthStage: 1
-  - id: Crop_Pea
+  - id: CropPea
     displayName: Pea
-    seedId: Item_Pea_Seeds
+    seedId: Item_PeaSeeds
     growthTime: 3
     monsterPrefab: {fileID: 3828882189639188319, guid: 739d968c37273c8419bbb6c67c653830, type: 3}
     tiles:

@@ -7,6 +7,7 @@ public class CropDatabase : MonoBehaviour
     [SerializeField] private CropDatabaseAsset asset;
     
     private Dictionary<string, CropDatabaseAsset.CropData> cache = new();
+    private Dictionary<string, string> seedCache = new();
 
     public CropDatabaseAsset.CropData this[string key]
     {
@@ -51,5 +52,18 @@ public class CropDatabase : MonoBehaviour
                 return false;
             }
         }
+    }
+
+    public string ToCropId(string id)
+    {
+        if (seedCache.ContainsKey(id)) return seedCache[id];
+
+        CropDatabaseAsset.CropData searchResult = asset.items.Find(item => item.seedId == id);
+        string cropId = searchResult?.id;
+        seedCache.Add(id, cropId);
+        
+        if(cropId == null) Debug.Log("Associated Crop Doesn't Exist!: " + id);
+        
+        return cropId;
     }
 }
