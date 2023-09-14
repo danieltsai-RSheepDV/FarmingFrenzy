@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] Image[] invItems; // array of background images
+    // structure of inventory -> inv slots -> (item sprite, amount, number key)
+    [SerializeField] Image[] invBgs; // array of background images
+    [SerializeField] TextMeshProUGUI[] numKeys; // array of item slot keys
+    [SerializeField] Image[] invItems; // array of item images
+    // consider extracting info based on structure?
 
     // color selection
     [SerializeField] Color selectColor; // highlight of tool
@@ -16,7 +21,14 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         invManager = GameManager.Player.GetComponent<InventoryManager>();
-        SelectTool(invManager.selectedSlot);
+        SelectTool(invManager.selectedSlot); // select default tool
+
+        // setup
+        // numkeys
+        for (int i = 0; i < numKeys.Length; i++)
+        {
+
+        }
     }
 
     void Update()
@@ -32,10 +44,10 @@ public class InventoryUI : MonoBehaviour
         selectedIndex = index;
 
         // set all bg images to white
-        foreach (Image bg in invItems)
+        foreach (Image bg in invBgs)
         {
             bg.color = Color.white;
         }
-        invItems[selectedIndex].color = selectColor; // set the selected image to be selectcolor
+        invBgs[selectedIndex].color = selectColor; // set the selected image to be selectcolor
     }
 }

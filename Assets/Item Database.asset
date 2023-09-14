@@ -43,13 +43,13 @@ MonoBehaviour:
     tags: []
   - id: Item_Fence
     displayName: Fence
-    icon: {fileID: 801855052, guid: 45fee9b725b95be48a7f645b42e6c501, type: 3}
+    icon: {fileID: 1762250535, guid: 0a7bb922756d9c244b42c32587eaf536, type: 3}
     maxStack: 2147483647
     tags:
     - structure
   - id: Item_Path
     displayName: Path
-    icon: {fileID: -624899245, guid: 45fee9b725b95be48a7f645b42e6c501, type: 3}
+    icon: {fileID: -565070175, guid: c7ff0f170c1ae384481b3ccf8c007222, type: 3}
     maxStack: 2147483647
     tags:
     - path

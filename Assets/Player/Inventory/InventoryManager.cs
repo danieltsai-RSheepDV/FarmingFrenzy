@@ -20,6 +20,9 @@ public class InventoryManager : MonoBehaviour
     
     private ItemDatabase ItemDatabase;
 
+    // for money
+    private float money;
+
     private void Start()
     {
         ItemDatabase = GameManager.ItemDatabase;
@@ -157,5 +160,23 @@ public class InventoryManager : MonoBehaviour
         }
 
         return -1;
+    }
+
+    // money stuff
+    public float GetMoney()
+    {
+        return money;
+    }
+
+    public bool SetMoney(float amount)
+    {
+        if(amount <= money) // no debt check!
+        {
+            money -= amount;
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 }
