@@ -13,7 +13,7 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private TileBase tilledTile;
     [SerializeField] private TileBase wateredTilledTile;
 
-    private List<FarmTileInformation> tiles = new();
+    public List<FarmTileInformation> tiles = new();
 
     private CropDatabase CropDatabase;
 

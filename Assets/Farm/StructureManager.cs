@@ -11,7 +11,7 @@ public class StructureManager : MonoBehaviour
     [SerializeField] private Tilemap paths;
     [SerializeField] private Tilemap dirt;
 
-    private List<StructureTileInformation> tiles = new();
+    public List<StructureTileInformation> tiles = new();
 
     private StructureDatabase StructureDatabase;
 
@@ -88,7 +88,34 @@ public class StructureManager : MonoBehaviour
         
         return false;
     }
-    
+
+
+    public void UpdateTileMap()
+    {
+        List<StructureTileInformation> toDelete = new();
+        
+        foreach (var ti in tiles)
+        {
+            if (ti.path)
+            {
+                paths.SetTile(ti.position, StructureDatabase[ti.structureId].tile);
+            } 
+            else if (ti.destroyed)
+            {
+                structures.SetTile(ti.position, null);
+                toDelete.Add(ti);
+            }
+            else
+            {
+                structures.SetTile(ti.position, StructureDatabase[ti.structureId].tile);
+            }
+        }
+
+        foreach (var VARIABLE in toDelete)
+        {
+            tiles.Remove(VARIABLE);
+        }
+    }
 
     public void UpdateTileMap(Vector3Int position)
     {
@@ -102,6 +129,7 @@ public class StructureManager : MonoBehaviour
         else if (ti.destroyed)
         {
             structures.SetTile(position, null);
+            tiles.Remove(ti);
         }
         else
         {

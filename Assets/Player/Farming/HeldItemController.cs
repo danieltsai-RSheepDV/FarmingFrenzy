@@ -38,6 +38,6 @@ public class HeldItemController : MonoBehaviour
         
         //Sprite
         var inventoryItem = InventoryManager.GetSelectedItem();
-        sp.sprite = inventoryItem != default ? ItemDatabase[InventoryManager.GetSelectedItem().itemId].icon : null;
+        sp.sprite = inventoryItem != null ? ItemDatabase[InventoryManager.GetSelectedItem().itemId].icon : null;
     }
 }

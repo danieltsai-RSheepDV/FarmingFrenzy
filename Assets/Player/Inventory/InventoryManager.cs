@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,8 +15,19 @@ public class InventoryManager : MonoBehaviour
     private InputAction item5Action;
     private InputAction item6Action;
 
+    [Serializable]
+    public class InventorySlotData
+    {
+        public string itemId;
+        public int amount;
 
-    public (string itemId, int amount)[] items = new (string itemId, int amount)[INVENTORY_SLOTS];
+        public InventorySlotData(string s, int i)
+        {
+            itemId = s;
+            amount = i;
+        }
+    }
+    [NonSerialized] public InventorySlotData[] items = new InventorySlotData[INVENTORY_SLOTS];
     public int selectedSlot = 0;
     
     private ItemDatabase ItemDatabase;
@@ -83,7 +95,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public (string itemId, int amount) GetSelectedItem()
+    public InventorySlotData GetSelectedItem()
     {
         return items[selectedSlot];
     }
@@ -104,9 +116,8 @@ public class InventoryManager : MonoBehaviour
             {
                 inventoryIndex = FindFirstEmpty();
                 if (inventoryIndex < 0) return false;
-                
-                items[inventoryIndex].itemId = id;
-                items[inventoryIndex].amount = 1;
+
+                items[inventoryIndex] = new InventorySlotData(id, 1);
                 return true;
             }
         }
@@ -126,7 +137,7 @@ public class InventoryManager : MonoBehaviour
             if (inventoryIndex >= 0)
             {
                 items[inventoryIndex].amount--;
-                if (items[inventoryIndex].amount <= 0) items[inventoryIndex] = default;
+                if (items[inventoryIndex].amount <= 0) items[inventoryIndex] = null;
                 
                 return true;
             }
@@ -146,7 +157,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].Equals(default)) return i;
+            if (items[i] == null) return i;
         }
 
         return -1;
@@ -156,7 +167,13 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].itemId == id) return i;
+            if (items[i] != null)
+            {
+                if (items[i].itemId == id)
+                {
+                    return i;
+                }
+            }
         }
 
         return -1;

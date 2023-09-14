@@ -24,7 +24,7 @@ public class FarmingActionController : MonoBehaviour
     {
         try
         {
-            if (inventoryManager.GetSelectedItem() == default)
+            if (inventoryManager.GetSelectedItem() == null)
             {
                 Debug.Log("Attempted to use nothing! Not an error, just kinda weird.");
                 return;
