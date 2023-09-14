@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b15d5ca393dccc241af988f6b80ab511
+guid: a0f1d9350d6929e4e9a00bc43b21585e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pea Seed_0
+      name: Fence2_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 11
-        width: 20
-        height: 20
+        x: 0
+        y: 5
+        width: 28
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af3b5133da39e4d4aa6ff063a716b65e
-      internalID: -566119265
+      spriteID: 8d9c418b15be0904db07391991bfff1e
+      internalID: -132230767
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pea Seed_0: -566119265
+      Fence2_0: -132230767
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

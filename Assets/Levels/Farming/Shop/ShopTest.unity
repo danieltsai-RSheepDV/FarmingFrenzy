@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -565070175, guid: c7ff0f170c1ae384481b3ccf8c007222, type: 3}
+  m_Sprite: {fileID: 729919756, guid: be475a3cda455b44ebdb73cd2ec72286, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1607,6 +1607,7 @@ MonoBehaviour:
   untilledTile: {fileID: 11400000, guid: 7c6efb4f6d93a634096c77df6fcf35cd, type: 2}
   tilledTile: {fileID: 11400000, guid: 020821dfb97915d4b969f8ac858e6b00, type: 2}
   wateredTilledTile: {fileID: 11400000, guid: 6f7a573c4cfe1824b9bc07deb4d02245, type: 2}
+  tiles: []
 --- !u!114 &769792386
 MonoBehaviour:
   m_ObjectHideFlags: 0
