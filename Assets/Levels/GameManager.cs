@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public static StructureManager StructureManager;
     public static ItemDatabase ItemDatabase;
 
+    private int dayCount;
+
     private void Awake()
     {
         Player = player;
@@ -23,11 +25,10 @@ public class GameManager : MonoBehaviour
         ItemDatabase = GetComponent<ItemDatabase>();
     }
 
-    private void ProgressDay()
+    public void ProgressDay()
     {
         FarmManager.UpdateTileMap();
-        //     daycont++;
-        //     day.text = "Day" + daycont.ToString();
+        dayCount++;
     }
     
     public void ChangeScene(string s)

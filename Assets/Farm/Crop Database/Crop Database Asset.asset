@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a6314923d5de44796a83aa2968178c, type: 3}
   m_Name: Crop Database Asset
   m_EditorClassIdentifier: 
-  items:
+  crops:
   - id: Crop_Potato
     displayName: Potato
     seedId: Item_PotatoSeeds
@@ -23,7 +23,7 @@ MonoBehaviour:
       growthStage: 0
     - tile: {fileID: 11400000, guid: f59089b8a8aeeb949b6782b5b51b19bc, type: 2}
       growthStage: 1
-  - id: CropPea
+  - id: Crop_Pea
     displayName: Pea
     seedId: Item_PeaSeeds
     growthTime: 3

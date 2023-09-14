@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 6891347829824861875}
   - component: {fileID: 7072168519964354724}
   - component: {fileID: 4622089305020835874}
+  - component: {fileID: 5614955358513763284}
   - component: {fileID: 2347516498392823983}
   - component: {fileID: 2917230690850545614}
   m_Layer: 0
@@ -483,6 +484,34 @@ MonoBehaviour:
   stoppedIFrames:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5614955358513763284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7591648402249688136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8694dd53aa2463eb0557d74071914b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PI: {fileID: -944628639613478452, guid: 6d945a63a8f78a64489d256e03c4c544, type: 3}
+  onClicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ProgressDay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &2347516498392823983
 BoxCollider2D:
   m_ObjectHideFlags: 0
