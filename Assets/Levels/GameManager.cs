@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public static StructureManager StructureManager;
     public static ItemDatabase ItemDatabase;
 
+    [SerializeField] private Animator fader;
+
     private int dayCount;
 
     private void Awake()
@@ -27,8 +29,14 @@ public class GameManager : MonoBehaviour
 
     public void ProgressDay()
     {
+        fader.SetTrigger("FadeOut");
+    }
+
+    public void DayUpdate()
+    {
         FarmManager.UpdateTileMap();
         dayCount++;
+        fader.SetTrigger("FadeIn");
     }
     
     public void ChangeScene(string s)
