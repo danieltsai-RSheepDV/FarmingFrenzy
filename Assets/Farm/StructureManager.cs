@@ -27,7 +27,7 @@ public class StructureManager : MonoBehaviour
         new Vector3Int(1, 1)
     };
 
-    private void Start()
+    private void Awake()
     {
         StructureDatabase = GetComponent<StructureDatabase>();
     }

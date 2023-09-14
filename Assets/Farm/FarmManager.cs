@@ -14,10 +14,11 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private TileBase wateredTilledTile;
 
     public List<FarmTileInformation> tiles = new();
+    [NonSerialized] public bool shouldSummonMonsters = false;
 
     private CropDatabase CropDatabase;
 
-    private void Start()
+    private void Awake()
     {
         CropDatabase = GetComponent<CropDatabase>();
     }
@@ -68,8 +69,6 @@ public class FarmManager : MonoBehaviour
 
     public void UpdateTileMap()
     {
-        List<FarmTileInformation> toDelete = new();
-        
         foreach (var ti in tiles)
         {
             if (ti.watered)
@@ -84,17 +83,39 @@ public class FarmManager : MonoBehaviour
                     if (ti.growthStage >= cropData.growthTime)
                     {
                         ti.finished = true;
-                        
-                        GameObject ob = Instantiate(cropData.monsterPrefab);
-                        ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                        shouldSummonMonsters = true;
                     }
                 }
             }
             
             UpdateTileMap(ti.position);
-            if(ti.finished) toDelete.Add(ti);
         }
+    }
 
+    public void LoadTileMap()
+    {
+        foreach (var ti in tiles)
+        {
+            UpdateTileMap(ti.position);
+        }
+    }
+
+    public void SummonMonsters()
+    {
+        List<FarmTileInformation> toDelete = new();
+        
+        foreach (var ti in tiles)
+        {
+            if (ti.finished && !String.IsNullOrEmpty(ti.cropId))
+            {
+                CropDatabaseAsset.CropData cropData = CropDatabase[ti.cropId];
+                
+                GameObject ob = Instantiate(cropData.monsterPrefab);
+                ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                toDelete.Add(ti);
+            }
+        }
+        
         foreach (var VARIABLE in toDelete)
         {
             tiles.Remove(VARIABLE);

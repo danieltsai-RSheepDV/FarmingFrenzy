@@ -3446,6 +3446,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
+--- !u!1 &270435065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 720176190753122186, guid: b94f501f6118864408924d8a0610bdcd, type: 3}
+  m_PrefabInstance: {fileID: 270435064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &375343678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +3652,10 @@ PrefabInstance:
     - target: {fileID: 7251186767395508205, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 270435065}
+    - target: {fileID: 7251186767395508205, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
+      propertyPath: summonMonsters
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8685543023673493171, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4047,6 +4056,7 @@ MonoBehaviour:
   structures: {fileID: 1941792128}
   paths: {fileID: 1781916276}
   dirt: {fileID: 101192591}
+  tiles: []
 --- !u!4 &1396503554
 Transform:
   m_ObjectHideFlags: 0
@@ -4084,6 +4094,8 @@ MonoBehaviour:
   untilledTile: {fileID: 11400000, guid: 7c6efb4f6d93a634096c77df6fcf35cd, type: 2}
   tilledTile: {fileID: 11400000, guid: 020821dfb97915d4b969f8ac858e6b00, type: 2}
   wateredTilledTile: {fileID: 11400000, guid: 6f7a573c4cfe1824b9bc07deb4d02245, type: 2}
+  tiles: []
+  shouldSummonMonsters: 1
 --- !u!114 &1396503556
 MonoBehaviour:
   m_ObjectHideFlags: 0

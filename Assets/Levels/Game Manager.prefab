@@ -1086,6 +1086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6329195311511781716}
+  - component: {fileID: 3008598390519899257}
   - component: {fileID: 7251186767395508205}
   - component: {fileID: 3980934291070474743}
   - component: {fileID: 4196262329235066582}
@@ -1114,6 +1115,19 @@ Transform:
   - {fileID: 5426624208209723123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3008598390519899257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9013175487059844143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4864dc14252411caeef65fa5ff039ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveVersion: 0.01
 --- !u!114 &7251186767395508205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,6 +1144,7 @@ MonoBehaviour:
   fm: {fileID: 0}
   sm: {fileID: 0}
   fader: {fileID: 4954149597148076269}
+  summonMonsters: 0
 --- !u!114 &3980934291070474743
 MonoBehaviour:
   m_ObjectHideFlags: 0

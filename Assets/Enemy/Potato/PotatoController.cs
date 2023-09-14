@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PotatoController : MonoBehaviour
 {
@@ -29,12 +30,13 @@ public class PotatoController : MonoBehaviour
     [SerializeField] public float velPower;
 
     private float timer;
+    private bool initialized;
     
     private GameObject target;
     private Vector3 direction;
     private float usedAngle;
     private float distanceTravelled;
-    
+
     private Rigidbody2D rb;
     private GameObject player;
     //TODO: Replace with house
@@ -47,11 +49,13 @@ public class PotatoController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        timer = pauseTime;
+        timer = pauseTime + Random.Range(-0.5f, 0.5f);
         player = GameManager.Player;
         house = GameObject.Find("House");
         
         target = house;
+
+        initialized = true;
     }
 
     // Update is called once per frame
@@ -89,7 +93,7 @@ public class PotatoController : MonoBehaviour
                     curState = States.IDLE;
                     anim.SetBool("Rolling", false);
                     
-                    timer = pauseTime;
+                    timer = pauseTime + Random.Range(-0.5f, 0.5f);
                     usedAngle = 0f;
                     distanceTravelled = 0f;
                     
@@ -150,6 +154,8 @@ public class PotatoController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        if(!initialized) return;
+
         Health h = col.gameObject.GetComponent<Health>();
         if (h && col.gameObject == GameManager.Player)
         {

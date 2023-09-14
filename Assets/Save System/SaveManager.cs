@@ -7,10 +7,10 @@ using Application = UnityEngine.Device.Application;
 
 public class SaveManager
 {
-    public static void Save(FarmManager farmManager, StructureManager structureManager, InventoryManager inventoryManager, int dayCount)
+    public static void Save(float version, FarmManager farmManager, StructureManager structureManager, InventoryManager inventoryManager, int dayCount)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "FarmingFrenzy.sav";
+        string path = Application.persistentDataPath + "/FarmingFrenzy" + version + ".sav";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SaveData data = new SaveData(farmManager, structureManager, inventoryManager, dayCount);
@@ -19,9 +19,9 @@ public class SaveManager
         stream.Close();
     }
 
-    public static SaveData Load()
+    public static SaveData Load(float version)
     {
-        string path = Application.persistentDataPath + "FarmingFrenzy.sav";
+        string path = Application.persistentDataPath + "/FarmingFrenzy" + version + ".sav";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

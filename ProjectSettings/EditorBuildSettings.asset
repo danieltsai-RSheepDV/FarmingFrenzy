@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Levels/Farming/FarmingScene.unity
     guid: 0df65ed3b8a027c41adc72ddba8eaf61
   - enabled: 1
+    path: Assets/Levels/Harvest/HarvestScene.unity
+    guid: f3441053bfdcfaa40b895f77d9e6a05f
+  - enabled: 1
     path: Assets/Levels/End.unity
     guid: 9c6dfbbf858d8084abd2b259fcbdc6c1
   m_configObjects: {}
