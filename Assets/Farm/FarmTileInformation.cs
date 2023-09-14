@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class TileInformation
+public class FarmTileInformation
 {
     public string cropId;
     
@@ -14,7 +14,7 @@ public class TileInformation
     public bool tilled = false;
     public bool finished = false;
 
-    public TileInformation(Vector3Int position)
+    public FarmTileInformation(Vector3Int position)
     {
         this.position = position;
     }

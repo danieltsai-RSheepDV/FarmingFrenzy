@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CropDatabase : MonoBehaviour
+public class StructureDatabase : MonoBehaviour
 {
-    [SerializeField] private CropDatabaseAsset asset;
+    [SerializeField] private StructureDatabaseAsset asset;
     
-    private Dictionary<string, CropDatabaseAsset.CropData> cache = new();
-    private Dictionary<string, string> seedCache = new();
+    private Dictionary<string, StructureDatabaseAsset.StructureData> cache = new();
+    private Dictionary<string, string> itemCache = new();
 
-    public CropDatabaseAsset.CropData this[string key]
+    public StructureDatabaseAsset.StructureData this[string key]
     {
         get
         {
@@ -19,7 +19,7 @@ public class CropDatabase : MonoBehaviour
             }
             else
             {
-                CropDatabaseAsset.CropData searchResult = asset.crops.Find(item => item.id == key);
+                StructureDatabaseAsset.StructureData searchResult = asset.structures.Find(item => item.id == key);
                 if (searchResult != null)
                 {
                     cache.Add(key, searchResult);
@@ -41,7 +41,7 @@ public class CropDatabase : MonoBehaviour
         }
         else
         {
-            CropDatabaseAsset.CropData searchResult = asset.crops.Find(item => item.id == key);
+            StructureDatabaseAsset.StructureData searchResult = asset.structures.Find(item => item.id == key);
             if (searchResult != null)
             {
                 cache.Add(key, searchResult);
@@ -54,15 +54,15 @@ public class CropDatabase : MonoBehaviour
         }
     }
 
-    public string ToCropId(string id)
+    public string ToItemId(string id)
     {
-        if (seedCache.ContainsKey(id)) return seedCache[id];
+        if (itemCache.ContainsKey(id)) return itemCache[id];
 
-        CropDatabaseAsset.CropData searchResult = asset.crops.Find(item => item.seedId == id);
+        StructureDatabaseAsset.StructureData searchResult = asset.structures.Find(item => item.itemId == id);
         string cropId = searchResult?.id;
-        seedCache.Add(id, cropId);
+        itemCache.Add(id, cropId);
         
-        if(cropId == null) Debug.Log("Associated Crop Doesn't Exist!: " + id);
+        if(cropId == null) Debug.Log("Associated Structure Doesn't Exist!: " + id);
         
         return cropId;
     }

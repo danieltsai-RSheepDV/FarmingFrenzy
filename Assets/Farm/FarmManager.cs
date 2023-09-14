@@ -13,7 +13,7 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private TileBase tilledTile;
     [SerializeField] private TileBase wateredTilledTile;
 
-    private List<TileInformation> tiles = new();
+    private List<FarmTileInformation> tiles = new();
 
     private CropDatabase CropDatabase;
 
@@ -24,10 +24,12 @@ public class FarmManager : MonoBehaviour
 
     public bool PlantSeed(string id, Vector3Int position)
     {
-        TileInformation ti;
+        FarmTileInformation ti;
         if (!GetTile(position, out ti)) return false;
         
         if (dirt.HasTile(position) != tilledTile) return false;
+
+        if (ti.cropId != null) return false;
         
         string cropId = CropDatabase.ToCropId(id);
         if (cropId == null) return false;
@@ -39,7 +41,7 @@ public class FarmManager : MonoBehaviour
 
     public void WaterSoil(Vector3Int position)
     {
-        TileInformation ti;
+        FarmTileInformation ti;
         if (GetTile(position, out ti))
         {
             if (ti.tilled) ti.watered = true;
@@ -49,13 +51,13 @@ public class FarmManager : MonoBehaviour
 
     public void TillSoil(Vector3Int position)
     {
-        TileInformation ti;
+        FarmTileInformation ti;
         if (!GetTile(position, out ti))
         {
             if (!dirt.HasTile(position)) return;
             if (dirt.GetTile(position) != untilledTile) return;
             
-            ti = new TileInformation(position);
+            ti = new FarmTileInformation(position);
             ti.tilled = true;
             tiles.Add(ti);
 
@@ -66,7 +68,7 @@ public class FarmManager : MonoBehaviour
 
     public void UpdateTileMap()
     {
-        List<TileInformation> toDelete = new();
+        List<FarmTileInformation> toDelete = new();
         
         foreach (var ti in tiles)
         {
@@ -102,7 +104,7 @@ public class FarmManager : MonoBehaviour
 
     public void UpdateTileMap(Vector3Int position)
     {
-        TileInformation ti;
+        FarmTileInformation ti;
         GetTile(position, out ti);
         
         //Resetting
@@ -145,7 +147,7 @@ public class FarmManager : MonoBehaviour
         crops.SetTile(position, tile);
     }
 
-    public bool GetTile(Vector3Int position, out TileInformation t)
+    public bool GetTile(Vector3Int position, out FarmTileInformation t)
     {
         t = tiles.Find(tile => tile.position == position);
         return t != null;

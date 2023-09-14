@@ -8,12 +8,14 @@ public class FarmingActionController : MonoBehaviour
     private const string RAKE = "Item_Rake";
     
     private FarmManager farmManager;
+    private StructureManager structureManager;
     private ItemDatabase itemDatabase;
     private InventoryManager inventoryManager;
 
     private void Start()
     {
         farmManager = GameManager.FarmManager;
+        structureManager = GameManager.StructureManager;
         inventoryManager = GetComponent<InventoryManager>();
         itemDatabase = GameManager.ItemDatabase;
     }
@@ -32,10 +34,16 @@ public class FarmingActionController : MonoBehaviour
             if (itemData.tags.Contains("seed"))
             {
                 if(farmManager.PlantSeed(itemData.id, position)) inventoryManager.RemoveItem(itemData.id);
-            }else if (itemData.id == WATERING_CAN)
+            }
+            else if(itemData.tags.Contains("structure"))
+            {
+                if (structureManager.PlaceStructure(itemData.id, position)) inventoryManager.RemoveItem(itemData.id);
+            }
+            else if (itemData.id == WATERING_CAN)
             {
                 farmManager.WaterSoil(position);
-            }else if (itemData.id == RAKE)
+            }
+            else if (itemData.id == RAKE)
             {
                 farmManager.TillSoil(position);
             }

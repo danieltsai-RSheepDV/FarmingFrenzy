@@ -40,6 +40,14 @@ public class InventoryManager : MonoBehaviour
         AddItem("Item_PotatoSeeds");
         AddItem("Item_PotatoSeeds");
         AddItem("Item_PotatoSeeds");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
+        AddItem("Item_Fence");
     }
 
     private void Update()

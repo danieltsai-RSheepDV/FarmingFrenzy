@@ -25,5 +25,5 @@ public class CropDatabaseAsset : ScriptableObject
         public int growthStage;
     }
     
-    public List<CropData> items;
+    public List<CropData> crops;
 }

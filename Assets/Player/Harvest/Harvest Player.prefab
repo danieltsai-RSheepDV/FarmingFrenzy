@@ -4914,6 +4914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148873484289622533, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f655beee7b5868f468dbee28b844bf87, type: 2}
     - target: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       propertyPath: m_Name
       value: Harvest Player

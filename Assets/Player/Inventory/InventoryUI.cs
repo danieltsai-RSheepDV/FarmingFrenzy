@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     
     InventoryManager invManager;
 
-    void Awake()
+    void Start()
     {
         invManager = GameManager.Player.GetComponent<InventoryManager>();
         SelectTool(invManager.selectedSlot);

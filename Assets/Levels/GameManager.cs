@@ -11,12 +11,15 @@ public class GameManager : MonoBehaviour
     public static GameObject Player;
     [SerializeField] private FarmManager fm;
     public static FarmManager FarmManager;
+    [SerializeField] private StructureManager sm;
+    public static StructureManager StructureManager;
     public static ItemDatabase ItemDatabase;
 
     private void Awake()
     {
         Player = player;
         FarmManager = fm;
+        StructureManager = sm;
         ItemDatabase = GetComponent<ItemDatabase>();
     }
 
