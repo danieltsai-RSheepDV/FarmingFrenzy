@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
+    // argument null exceptions when game object selected:
+    // https://forum.unity.com/threads/argumentnullexception-value-cannot-be-null-parameter-name-_unity_self.1431901/
     InventoryManager invManager;
     ItemDatabase ItemDatabase;
 
-    const int shopSize = 4;
+    const int toolsSkipped = 2; // number of tools before consumables
+    const string moneySymb = "$";
     [SerializeField] private string[] shopIds = new string[] { "Item_PeaSeeds", "Item_PotatoSeeds", "Item_Fence", "Item_Path" }; // items that are in the shop
     
     [SerializeField] GameObject shopGrid; // the shop's grid
@@ -21,16 +23,18 @@ public class ShopManager : MonoBehaviour
     public class ShopItemData
     {
         public string itemId;
-        public int price;
+        public int index;
+        public float price;
         public Button buyButton;
 
-        public ShopItemData(string s, int i)
+        public ShopItemData(string s, int i, float p)
         {
             itemId = s;
-            price = i;
+            index = i;
+            price = p;
         }
     }
-    public List<ShopItemData> items = new List<ShopItemData>(); // stores the shop items
+    public List<ShopItemData> shopItems = new List<ShopItemData>(); // stores the shop items
 
     void Start()
     {
@@ -40,12 +44,6 @@ public class ShopManager : MonoBehaviour
         SetUpShop();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetUpShop() // show shop items
     {
         for (int i = 0; i < shopIds.Length; i++) // add each item into the shop
@@ -53,16 +51,27 @@ public class ShopManager : MonoBehaviour
             GameObject newShopItem = Instantiate(shopItem); // instantiate shop item
 
             // create items
-            ItemDatabaseAsset.ItemData itemData = ItemDatabase[shopIds[i]]; // get item data
+            string id = shopIds[i]; // item id
+            ItemDatabaseAsset.ItemData itemData = ItemDatabase[id]; // get item data
             newShopItem.transform.GetChild(0).GetComponent<Image>().sprite = itemData.icon; // show shop item sprite
-            newShopItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "$" + itemData.price.ToString(); // show item price
+            float price = itemData.price;
+            newShopItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = moneySymb + price.ToString(); // show item price
 
-            newShopItem.transform.parent = shopGrid.transform; // add shop item to grid
+            newShopItem.transform.SetParent(shopGrid.transform); // add shop item to grid
+
+            // add items to list
+            ShopItemData newStoredShopItem = new ShopItemData(id, i, price); // new ShopItem instantiated
+
+            newStoredShopItem.buyButton = newShopItem.transform.GetChild(3).GetComponent<Button>(); // store button
+            newStoredShopItem.buyButton.onClick.AddListener(delegate { BuyItem(newStoredShopItem); }); // trigger buying of item on click
+
+            shopItems.Add(newStoredShopItem); // add item to list
         }
     }
 
     private void BuyItem(ShopItemData shopItem)
-    {
+    { 
         invManager.DecMoney(shopItem.price);
+        invManager.items[shopItem.index + toolsSkipped].amount++; // increase amount
     }
 }

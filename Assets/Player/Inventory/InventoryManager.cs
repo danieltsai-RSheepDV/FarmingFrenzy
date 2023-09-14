@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
     private ItemDatabase ItemDatabase;
 
     // for money
-    private float money;
+    private float money = 200;
 
     private void Start()
     {
