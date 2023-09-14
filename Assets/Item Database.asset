@@ -47,3 +47,9 @@ MonoBehaviour:
     maxStack: 2147483647
     tags:
     - structure
+  - id: Item_Path
+    displayName: Path
+    icon: {fileID: -624899245, guid: 45fee9b725b95be48a7f645b42e6c501, type: 3}
+    maxStack: 2147483647
+    tags:
+    - path

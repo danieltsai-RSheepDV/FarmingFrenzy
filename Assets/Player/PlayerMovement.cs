@@ -17,10 +17,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float accel;
     [SerializeField] public float decel;
     [SerializeField] public float velPower;
-    
+
     private Rigidbody2D rb;
     private Camera cam;
     private Animator anim;
+    [NonSerialized] public bool onPath = false;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDir = moveAction.ReadValue<Vector2>();
         anim.SetBool("Walking", moveDir.magnitude > SMALL_NUMBER);
-        SetVelocity(moveDir * (useAction.inProgress ? 0.5f : 1f) * speed);
+        SetVelocity(moveDir * (useAction.inProgress ? 0.5f : 1f) * (onPath ? 1.3f : 1f) * speed);
         sp.flipX = cam.ScreenToWorldPoint(mouseAction.ReadValue<Vector2>()).x > transform.position.x;
     }
 

@@ -48,6 +48,13 @@ public class InventoryManager : MonoBehaviour
         AddItem("Item_Fence");
         AddItem("Item_Fence");
         AddItem("Item_Fence");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
+        AddItem("Item_Path");
     }
 
     private void Update()

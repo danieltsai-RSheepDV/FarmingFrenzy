@@ -8,11 +8,24 @@ using UnityEngine.Tilemaps;
 public class StructureManager : MonoBehaviour
 {
     [SerializeField] private Tilemap structures;
+    [SerializeField] private Tilemap paths;
     [SerializeField] private Tilemap dirt;
 
     private List<StructureTileInformation> tiles = new();
 
     private StructureDatabase StructureDatabase;
+
+    private Vector3Int[] pathCheckOffsets = new[]
+    {
+        new Vector3Int(-1, -1),
+        new Vector3Int(0, -1),
+        new Vector3Int(1, -1),
+        new Vector3Int(-1, 0),
+        new Vector3Int(1, 0),
+        new Vector3Int(-1, 1),
+        new Vector3Int(0, 1),
+        new Vector3Int(1, 1)
+    };
 
     private void Start()
     {
@@ -42,6 +55,39 @@ public class StructureManager : MonoBehaviour
         
         return false;
     }
+
+    public bool PlacePath(string id, Vector3Int position)
+    {
+        if (dirt.GetTile(position)) return false;
+        
+        StructureTileInformation ti;
+        if (!GetTile(position, out ti))
+        {
+            int adjacentCounter = 0;
+            foreach (Vector3Int offset in pathCheckOffsets)
+            {
+                if (paths.GetTile(position + offset)) adjacentCounter++;
+            }
+
+            if (adjacentCounter > 2) return false;
+            
+            ti = new StructureTileInformation(position);
+
+            string structureId = StructureDatabase.ToItemId(id);
+            if (structureId == null) return false;
+            
+            ti.structureId = structureId;
+            ti.path = true;
+            
+            tiles.Add(ti);
+            
+            UpdateTileMap(position);
+            
+            return true;
+        }
+        
+        return false;
+    }
     
 
     public void UpdateTileMap(Vector3Int position)
@@ -49,7 +95,11 @@ public class StructureManager : MonoBehaviour
         StructureTileInformation ti;
         GetTile(position, out ti);
 
-        if (ti.destroyed)
+        if (ti.path)
+        {
+            paths.SetTile(position, StructureDatabase[ti.structureId].tile);
+        } 
+        else if (ti.destroyed)
         {
             structures.SetTile(position, null);
         }

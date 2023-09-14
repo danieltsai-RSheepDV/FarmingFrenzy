@@ -39,6 +39,10 @@ public class FarmingActionController : MonoBehaviour
             {
                 if (structureManager.PlaceStructure(itemData.id, position)) inventoryManager.RemoveItem(itemData.id);
             }
+            else if(itemData.tags.Contains("path"))
+            {
+                if (structureManager.PlacePath(itemData.id, position)) inventoryManager.RemoveItem(itemData.id);
+            }
             else if (itemData.id == WATERING_CAN)
             {
                 farmManager.WaterSoil(position);
