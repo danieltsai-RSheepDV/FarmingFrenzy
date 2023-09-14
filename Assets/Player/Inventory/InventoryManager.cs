@@ -185,13 +185,26 @@ public class InventoryManager : MonoBehaviour
         return money;
     }
 
-    public bool SetMoney(float amount)
+    public bool DecMoney(float amount)
     {
         if(amount <= money) // no debt check!
         {
             money -= amount;
             return true;
         } else
+        {
+            return false;
+        }
+    }
+
+    public bool IncMoney(float amount)
+    {
+        if (amount <= money) // no debt check!
+        {
+            money -= amount;
+            return true;
+        }
+        else
         {
             return false;
         }

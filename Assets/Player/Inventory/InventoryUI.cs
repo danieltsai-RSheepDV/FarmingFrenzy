@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] Image[] invItems; // array of item images
     [SerializeField] TextMeshProUGUI[] invAmts; // array of item amounts
     [SerializeField] TextMeshProUGUI[] invNumKeys; // array of item slot keys
-    // consider extracting info based on structure?
+    // consider extracting info based on structure? create an inventory slot prefab!
 
     // color selection
     [SerializeField] Color selectColor; // highlight of tool
