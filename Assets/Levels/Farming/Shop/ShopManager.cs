@@ -13,8 +13,8 @@ public class ShopManager : MonoBehaviour
     ItemDatabase ItemDatabase;
 
     [SerializeField] private string[] shopIds = new string[] { "Item_PeaSeeds", "Item_PotatoSeeds", "Item_Fence", "Item_Path" }; // items that are in the shop
-    [SerializeField] GameObject shopGrid; // the shop's grid
     [SerializeField] GameObject shopItem; // shop item prefab
+    [SerializeField] Transform shopGrid; // the shop's grid
 
     void Start()
     {
@@ -43,12 +43,16 @@ public class ShopManager : MonoBehaviour
             float price = itemData.price;
             newShopItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = moneySymb + price.ToString();
 
+            // show item description
+            string description = itemData.desc;
+            newShopItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = description;
+
             // hook up button
             Button buyButton = newShopItem.transform.GetChild(3).GetComponent<Button>(); // store button
             buyButton.onClick.AddListener(delegate { BuyItem(id, price); }); // trigger buying of item on click
 
             // add shop item to grid
-            newShopItem.transform.SetParent(shopGrid.transform);
+            newShopItem.transform.SetParent(shopGrid);
         }
     }
 

@@ -15,48 +15,55 @@ MonoBehaviour:
   items:
   - id: Item_PotatoSeeds
     displayName: Potato Seeds
-    price: 1
     icon: {fileID: -25254898, guid: 715132378aabbfb4384c3a9b480901d5, type: 3}
+    price: 1
+    desc: Yummiest lumpy bowling ball.
     maxStack: 2147483647
     tags:
     - seed
   - id: Item_PeaSeeds
     displayName: Pea Seeds
-    price: 1
     icon: {fileID: -566119265, guid: b15d5ca393dccc241af988f6b80ab511, type: 3}
+    price: 1
+    desc: Peas in a pod. Until they are launched.
     maxStack: 2147483647
     tags:
     - seed
   - id: Item_Carrot_Seeds
     displayName: Carrot Seeds
-    price: 1
     icon: {fileID: 0}
+    price: 1
+    desc: 
     maxStack: 2147483647
     tags:
     - seed
   - id: Item_Rake
     displayName: Rake
-    price: 1
     icon: {fileID: 21300000, guid: f1529b623dcd8ac43b8b59ece89a33b4, type: 3}
+    price: 1
+    desc: 
     maxStack: 1
     tags: []
   - id: Item_WateringCan
     displayName: Watering Can
-    price: 1
     icon: {fileID: 21300000, guid: 7f3bbdec90a9e6640aff92660b57598a, type: 3}
+    price: 1
+    desc: 
     maxStack: 1
     tags: []
   - id: Item_Fence
     displayName: Fence
-    price: 1
     icon: {fileID: -132230767, guid: a0f1d9350d6929e4e9a00bc43b21585e, type: 3}
+    price: 1
+    desc: Fence? More like deFENCE.
     maxStack: 2147483647
     tags:
     - structure
   - id: Item_Path
     displayName: Path
-    price: 1
     icon: {fileID: 729919756, guid: be475a3cda455b44ebdb73cd2ec72286, type: 3}
+    price: 1
+    desc: Cuter paths and faster getaways.
     maxStack: 2147483647
     tags:
     - path

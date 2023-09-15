@@ -11,9 +11,11 @@ public class ItemDatabaseAsset : ScriptableObject
     public class ItemData
     {
         public string id;
-        public string displayName;
-        public float price;
+        public string displayName;        
         public Sprite icon;
+        public float price;
+        public string desc;
+
         public int maxStack = Int32.MaxValue;
         public List<string> tags;
     }
