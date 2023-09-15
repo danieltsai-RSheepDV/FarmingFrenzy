@@ -83,8 +83,7 @@ public class InventoryUI : MonoBehaviour
         // inventory slot instantiation
         for (int i = 0; i < INVENTORY_SLOTS; i++)
         {
-            GameObject newInvSlot = Instantiate(invSlot);
-            newInvSlot.transform.SetParent(invBar); // set its parent to inventory bar
+            GameObject newInvSlot = Instantiate(invSlot, invBar); // instantiate and set its parent to inventory bar
             
             InvSlotUi newUi = new InvSlotUi(
                 newInvSlot.GetComponent<Image>(), // background image

@@ -29,8 +29,8 @@ public class ShopManager : MonoBehaviour
         const string moneySymb = "$";
         for (int i = 0; i < shopIds.Length; i++) // add each item into the shop
         {
-            // instantiate shop item
-            GameObject newShopItem = Instantiate(shopItem);
+            // instantiate shop item and set parent to grid
+            GameObject newShopItem = Instantiate(shopItem, shopGrid);
 
             // create items
             string id = shopIds[i]; // store item id
@@ -50,9 +50,6 @@ public class ShopManager : MonoBehaviour
             // hook up button
             Button buyButton = newShopItem.transform.GetChild(3).GetComponent<Button>(); // store button
             buyButton.onClick.AddListener(delegate { BuyItem(id, price); }); // trigger buying of item on click
-
-            // add shop item to grid
-            newShopItem.transform.SetParent(shopGrid);
         }
     }
 
