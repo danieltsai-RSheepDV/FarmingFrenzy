@@ -17,10 +17,12 @@ public class FarmManager : MonoBehaviour
     [NonSerialized] public bool shouldSummonMonsters = false;
 
     private CropDatabase CropDatabase;
+    private ItemDatabase ItemDatabase;
 
     private void Awake()
     {
         CropDatabase = GetComponent<CropDatabase>();
+        ItemDatabase = GameManager.ItemDatabase;
     }
 
     public bool PlantSeed(string id, Vector3Int position)
@@ -100,9 +102,10 @@ public class FarmManager : MonoBehaviour
         }
     }
 
-    public int SummonMonsters()
+    public int SummonMonsters(out int earnings)
     {
         int count = 0;
+        int earningCounter = 0;
         
         List<FarmTileInformation> toDelete = new();
         
@@ -116,6 +119,7 @@ public class FarmManager : MonoBehaviour
                 ob.transform.position = TileClicker.TileToWorldPos(ti.position);
                 toDelete.Add(ti);
 
+                earningCounter += Mathf.CeilToInt(ItemDatabase[cropData.seedId].price * 1.5f);
                 count++;
             }
         }
@@ -125,6 +129,7 @@ public class FarmManager : MonoBehaviour
             tiles.Remove(VARIABLE);
         }
 
+        earnings = earningCounter;
         return count;
     }
     

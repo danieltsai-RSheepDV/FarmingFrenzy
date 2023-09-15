@@ -10,6 +10,7 @@ public class SaveData
     public List<StructureTileInformation> structureTiles;
     public InventoryManager.InventorySlotData[] playerItems;
     public int dayCount;
+    public float money;
 
     public SaveData(FarmManager farmManager, StructureManager structureManager, InventoryManager inventoryManager,
         int dayCount)
@@ -18,5 +19,6 @@ public class SaveData
         structureTiles = structureManager.tiles;
         playerItems = inventoryManager.items;
         this.dayCount = dayCount;
+        this.money = inventoryManager.GetMoney();
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private HarvestStatsUI HarvestStatsUI;
     [SerializeField] private Animator fader;
+    [SerializeField] private TextMeshProUGUI day;
     [SerializeField] private bool summonMonsters;
 
     private int dayCount = 0;
@@ -46,14 +48,18 @@ public class GameManager : MonoBehaviour
             FarmManager.tiles = s.farmTiles;
             StructureManager.tiles = s.structureTiles;
             dayCount = s.dayCount;
+            day.text = "Day " + dayCount;
             Player.GetComponent<InventoryManager>().items = s.playerItems;
+            Player.GetComponent<InventoryManager>().money = s.money;
             
             FarmManager.LoadTileMap();
             StructureManager.UpdateTileMap();
 
             if (summonMonsters)
             {
-                HarvestStatsUI.numEnemies = FarmManager.SummonMonsters();
+                int earnings;
+                HarvestStatsUI.numEnemies = FarmManager.SummonMonsters(out earnings);
+                HarvestStatsUI.earnings = earnings;
             }
         }
         

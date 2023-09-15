@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
     private ItemDatabase ItemDatabase;
 
     // for money
-    private float money = 200;
+    [NonSerialized] public float money = 10;
 
     private void Start()
     {
@@ -199,14 +199,7 @@ public class InventoryManager : MonoBehaviour
 
     public bool IncMoney(float amount)
     {
-        if (amount <= money) // no debt check!
-        {
-            money -= amount;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        money += amount;
+        return true;
     }
 }

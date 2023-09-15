@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +9,8 @@ public class ShopManager : MonoBehaviour
     InventoryManager invManager;
     ItemDatabase ItemDatabase;
 
+    private Canvas canvas;
+
     [SerializeField] private string[] shopIds = new string[] { "Item_PeaSeeds", "Item_PotatoSeeds", "Item_Fence", "Item_Path" }; // items that are in the shop
     [SerializeField] GameObject shopItem; // shop item prefab
     [SerializeField] Transform shopGrid; // the shop's grid
@@ -21,7 +20,10 @@ public class ShopManager : MonoBehaviour
         invManager = GameManager.Player.GetComponent<InventoryManager>();
         ItemDatabase = GameManager.ItemDatabase;
 
+        canvas = GetComponent<Canvas>();
+
         SetUpShop();
+        ToggleShop(false);
     }
 
     private void SetUpShop() // show shop items
@@ -55,7 +57,15 @@ public class ShopManager : MonoBehaviour
 
     private void BuyItem(string itemId, float price)
     {
-        invManager.DecMoney(price); // decrease money
-        invManager.AddItem(itemId); // increase corresponding amount
+        if (invManager.DecMoney(price))
+        {
+            invManager.AddItem(itemId); // increase corresponding amount
+        }
+        
+    }
+    
+    public void ToggleShop(bool b)
+    {
+        canvas.enabled = b;
     }
 }

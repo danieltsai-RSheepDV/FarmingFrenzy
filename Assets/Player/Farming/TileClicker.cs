@@ -52,7 +52,7 @@ public class TileClicker : MonoBehaviour
 
     public static Vector3Int WorldToTilePos(Vector3 position)
     {
-        return new Vector3Int((int) Mathf.Floor(position.x / cellSize), (int) Mathf.Floor(position.y / cellSize), 0);
+        return new Vector3Int(Mathf.FloorToInt(position.x / cellSize), Mathf.FloorToInt(position.y / cellSize), 0);
     }
 
     public static Vector3 TileToWorldPos(Vector3 position)

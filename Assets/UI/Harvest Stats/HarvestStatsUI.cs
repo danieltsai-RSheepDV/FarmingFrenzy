@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HarvestStatsUI : MonoBehaviour
 {
     private Animator Animator;
 
-    public int numEnemies;
+    [NonSerialized] public int numEnemies;
+    [NonSerialized] public int earnings;
+
+    private int modifiedEarnings;
+
+    [SerializeField] private TextMeshProUGUI earningTextUI;
 
     public int enemyCounter
     {
@@ -19,8 +26,11 @@ public class HarvestStatsUI : MonoBehaviour
             EnemyCounter = value;
             if (EnemyCounter >= numEnemies)
             {
-                ToggleStats(true);
                 GameManager.Player.GetComponent<PlayerMovement>().allowMovement = false;
+                modifiedEarnings = Mathf.CeilToInt(earnings * (1 + Mathf.Log(numEnemies, 20)));
+                GameManager.Player.GetComponent<InventoryManager>().IncMoney(modifiedEarnings);
+                
+                ToggleStats(true);
             }
         }
     }
@@ -37,5 +47,11 @@ public class HarvestStatsUI : MonoBehaviour
     public void ToggleStats(bool b)
     {
         Animator.SetBool("Visible", b);
+        
+        float multiplier = (1 + Mathf.Log(numEnemies, 20));
+        multiplier = Mathf.Round(multiplier * 100) / 100f;
+        
+        earningTextUI.text = "You earned $" + modifiedEarnings + "!\n" +
+                             multiplier + "x multiplier!";
     }
 }
