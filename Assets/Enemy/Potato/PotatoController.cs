@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PotatoController : MonoBehaviour
+public class PotatoController : EnemyController
 {
     enum States
     {
@@ -49,7 +49,7 @@ public class PotatoController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        timer = pauseTime + Random.Range(-0.5f, 0.5f);
+        timer = pauseTime + Random.Range(0, 1f);
         player = GameManager.Player;
         house = GameObject.Find("House");
         
@@ -93,7 +93,7 @@ public class PotatoController : MonoBehaviour
                     curState = States.IDLE;
                     anim.SetBool("Rolling", false);
                     
-                    timer = pauseTime + Random.Range(-0.5f, 0.5f);
+                    timer = pauseTime + Random.Range(0, 1f);
                     usedAngle = 0f;
                     distanceTravelled = 0f;
                     
@@ -167,7 +167,7 @@ public class PotatoController : MonoBehaviour
         curState = States.IDLE;
         anim.SetBool("Rolling", false);
                     
-        timer = pauseTime;
+        timer = pauseTime + Random.Range(0, 1f);
         usedAngle = 0f;
         distanceTravelled = 0f;
     }

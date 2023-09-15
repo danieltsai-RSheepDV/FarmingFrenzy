@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PeaController : MonoBehaviour
+public class PeaController : EnemyController
 {
     enum States
     {
@@ -113,10 +113,5 @@ public class PeaController : MonoBehaviour
         force.y = Mathf.Pow(Mathf.Abs(yDif) * yAccel, velPower) * Mathf.Sign(yDif);
     
         rb.AddForce(force);
-    }
-
-    public void Die()
-    {
-        Destroy(gameObject);
     }
 }

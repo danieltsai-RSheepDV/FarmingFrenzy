@@ -9,11 +9,11 @@ public class SaveManager
 {
     public static void Save(float version, FarmManager farmManager, StructureManager structureManager, InventoryManager inventoryManager, int dayCount)
     {
+        SaveData data = new SaveData(farmManager, structureManager, inventoryManager, dayCount);
+        
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/FarmingFrenzy" + version + ".sav";
         FileStream stream = new FileStream(path, FileMode.Create);
-
-        SaveData data = new SaveData(farmManager, structureManager, inventoryManager, dayCount);
         
         formatter.Serialize(stream, data);
         stream.Close();

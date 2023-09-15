@@ -100,8 +100,10 @@ public class FarmManager : MonoBehaviour
         }
     }
 
-    public void SummonMonsters()
+    public int SummonMonsters()
     {
+        int count = 0;
+        
         List<FarmTileInformation> toDelete = new();
         
         foreach (var ti in tiles)
@@ -113,6 +115,8 @@ public class FarmManager : MonoBehaviour
                 GameObject ob = Instantiate(cropData.monsterPrefab);
                 ob.transform.position = TileClicker.TileToWorldPos(ti.position);
                 toDelete.Add(ti);
+
+                count++;
             }
         }
         
@@ -120,6 +124,8 @@ public class FarmManager : MonoBehaviour
         {
             tiles.Remove(VARIABLE);
         }
+
+        return count;
     }
     
 

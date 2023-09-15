@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8096613603315612147}
   - component: {fileID: 8335397126324573081}
+  - component: {fileID: 6403547773411077540}
   - component: {fileID: 4594795861612905686}
   - component: {fileID: 2283611066454544718}
   - component: {fileID: 148873484289622533}
@@ -192,6 +193,20 @@ MonoBehaviour:
   accel: 4
   decel: 4
   velPower: 1
+--- !u!114 &6403547773411077540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976581053307656021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1484b8a2ec5173489295c9e0f49eb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PI: {fileID: -944628639613478452, guid: 6d945a63a8f78a64489d256e03c4c544, type: 3}
+  selectedSlot: 0
 --- !u!70 &4594795861612905686
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

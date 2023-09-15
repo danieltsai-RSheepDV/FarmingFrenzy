@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1103013026523236995}
   - component: {fileID: 2584882232834407696}
   - component: {fileID: 8097549552200799543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Potato
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -83,10 +83,10 @@ MonoBehaviour:
   died:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 211192878973097415}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3053347115109446951}
+        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -194,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7087784811717233450}
   - component: {fileID: 2704916887078610339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

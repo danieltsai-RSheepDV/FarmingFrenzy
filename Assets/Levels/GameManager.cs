@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(ItemDatabase))]
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static StructureManager StructureManager;
     public static ItemDatabase ItemDatabase;
 
+    [SerializeField] private HarvestStatsUI HarvestStatsUI;
     [SerializeField] private Animator fader;
     [SerializeField] private bool summonMonsters;
 
@@ -37,27 +40,28 @@ public class GameManager : MonoBehaviour
     {
         saveVersion = _saveVersion.saveVersion;
         
-        SaveData s = SaveManager.Load(saveVersion);
+        SaveData s =  SaveManager.Load(saveVersion);
         if (s != null)
         {
             FarmManager.tiles = s.farmTiles;
             StructureManager.tiles = s.structureTiles;
             dayCount = s.dayCount;
+            Player.GetComponent<InventoryManager>().items = s.playerItems;
             
             FarmManager.LoadTileMap();
             StructureManager.UpdateTileMap();
 
             if (summonMonsters)
             {
-                FarmManager.SummonMonsters();
-                FarmManager.shouldSummonMonsters = false;
-            }
-            else
-            {
-                Player.GetComponent<InventoryManager>().items = s.playerItems;
+                HarvestStatsUI.numEnemies = FarmManager.SummonMonsters();
             }
         }
         
+    }
+
+    public void EnemyDied()
+    {
+        HarvestStatsUI.enemyCounter++;
     }
 
     public void ProgressDay()

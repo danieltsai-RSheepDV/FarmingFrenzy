@@ -3870,7 +3870,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 63
+      m_Bits: 191
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5048,7 +5048,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8096613603315612147, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 6573817566786423021}
     - targetCorrespondingSourceObject: {fileID: 8096613603315612147, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       insertIndex: -1

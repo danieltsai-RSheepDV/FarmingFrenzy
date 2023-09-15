@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6637754141012235219}
   - component: {fileID: 1059371614855425600}
   - component: {fileID: 3292880618187908795}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Pea
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -81,8 +81,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1412261728356102180}
-        m_TargetAssemblyTypeName: PeaController, Assembly-CSharp
-        m_MethodName: Die
+        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
+        m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2791004886719033466}
   - component: {fileID: 277589398391906389}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     [NonSerialized] public bool onPath = false;
 
+    [NonSerialized] public bool allowMovement = true;
+
     private void Start()
     {
         moveAction = PI.FindAction("Move");
@@ -43,6 +45,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!allowMovement)
+        {
+            SetVelocity(Vector3.zero);
+            return;
+        }
+        
         Vector3 moveDir = moveAction.ReadValue<Vector2>();
         anim.SetBool("Walking", moveDir.magnitude > SMALL_NUMBER);
         SetVelocity(moveDir * (useAction.inProgress ? 0.5f : 1f) * (onPath ? 1.3f : 1f) * speed);
