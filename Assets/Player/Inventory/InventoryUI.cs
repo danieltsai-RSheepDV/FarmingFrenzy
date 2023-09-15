@@ -28,16 +28,14 @@ public class InventoryUI : MonoBehaviour
         Image itemBg;
         Image itemImg;
         TextMeshProUGUI amount;
-        TextMeshProUGUI key;
 
-        public InvSlotUi(Image bg, Image s, TextMeshProUGUI a, TextMeshProUGUI k)
+        const int offset = 14;
+
+        public InvSlotUi(Image bg, Image s, TextMeshProUGUI a)
         {
             itemBg = bg;
             itemImg = s;
             amount = a;
-            key = k;
-
-            amount.enabled = false; // disable amount by default
         }
 
         public void SetBackground(Color color)
@@ -57,13 +55,14 @@ public class InventoryUI : MonoBehaviour
             if (visible)
             {
                 amount.text = a.ToString();
+                amount.enabled = true;
+                itemImg.transform.localPosition = new Vector3(offset, 0, 0); // offset to the side to accommodate amount 
+            } else
+            {
+                amount.enabled = false; // disable amount
+                itemImg.transform.localPosition = Vector3.zero; // center if invisible
             }
             
-        }
-
-        public void SetKey(int k)
-        {
-            key.text = k.ToString();
         }
 
         public void Disable()
@@ -88,11 +87,9 @@ public class InventoryUI : MonoBehaviour
             InvSlotUi newUi = new InvSlotUi(
                 newInvSlot.GetComponent<Image>(), // background image
                 newInvSlot.transform.GetChild(0).GetComponent<Image>(), // image sprite
-                newInvSlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>(), // amount text
-                newInvSlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>() // key text
+                newInvSlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>() // amount text
             ); // add inv slot to array
             inventorySlots[i] = newUi;
-            newUi.SetKey(i + 1); // set ui key to i + 1
         }
         SelectTool(invManager.selectedSlot); // select default tool
     }
@@ -119,6 +116,9 @@ public class InventoryUI : MonoBehaviour
                 if (itemData.maxStack != 1)
                 {
                     currInvSlot.SetAmount(itemStack.amount); // show amount
+                } else // max is 1, hide amount
+                {
+                    currInvSlot.SetAmount(0, false);
                 }
             }
             else
