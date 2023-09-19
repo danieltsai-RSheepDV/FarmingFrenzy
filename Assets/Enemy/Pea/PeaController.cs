@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(PathTarget))]
 public class PeaController : EnemyController
 {
     enum States
@@ -25,7 +26,7 @@ public class PeaController : EnemyController
     [SerializeField] public float decel;
     [SerializeField] public float velPower;
     
-    private GameObject target;
+    private PathTarget pathTarget;
     private float timer;
     
     private Rigidbody2D rb;
@@ -40,39 +41,40 @@ public class PeaController : EnemyController
         player = GameManager.Player;
         house = GameObject.Find("House");
 
-        target = house;
+        pathTarget = GetComponent<PathTarget>();
+        pathTarget.mTarget = house;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(target != null){
-            sp.flipX = target.transform.position.x > transform.position.x;
+        if(pathTarget.mTarget != null){
+            sp.flipX = pathTarget.transform.position.x > transform.position.x;
         }
         
-        if (target == house)
+        if (pathTarget.mTarget == house)
         {
             if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
             {
-                target = player;
+                pathTarget.mTarget = player;
             }
         }
-        else if(target == player)
+        else if(pathTarget.mTarget == player)
         {
             if (Vector3.Distance(player.transform.position, transform.position) > detectionDistance + 3)
             {
-                target = house;
+                pathTarget.mTarget = house;
             }
         }
-        if (target == null) return;
+        if (pathTarget.mTarget == null) return;
 
         if (curState == States.CHASING)
         {
             
-            Vector3 targetDir = (target.transform.position - transform.position).normalized;
+            Vector3 targetDir = (pathTarget.mTarget.transform.position - transform.position).normalized;
             SetVelocity(targetDir * speed);
 
-            if (Vector3.Distance(target.transform.position, transform.position) < fireDistance)
+            if (Vector3.Distance(pathTarget.mTarget.transform.position, transform.position) < fireDistance)
             {
                 curState = States.SHOOTING;
             }
@@ -85,12 +87,12 @@ public class PeaController : EnemyController
             {
                 GameObject proj = Instantiate(peaProjectile);
                 proj.transform.position = transform.position;
-                proj.GetComponent<PeaProjectileController>().Setup(target);
+                proj.GetComponent<PeaProjectileController>().Setup(pathTarget.mTarget);
 
                 timer = timePerShot;
             }
             
-            if (Vector3.Distance(target.transform.position, transform.position) > fireDistance + 3)
+            if (Vector3.Distance(pathTarget.mTarget.transform.position, transform.position) > fireDistance + 3)
             {
                 curState = States.CHASING;
             }
