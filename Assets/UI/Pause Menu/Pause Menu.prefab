@@ -1661,8 +1661,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+      - m_Target: {fileID: 4423721222117505603}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -1838,8 +1838,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Menus, Assembly-CSharp
+      - m_Target: {fileID: 4423721222117505603}
+        m_TargetAssemblyTypeName: AudioController, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
         m_Arguments:
@@ -2397,6 +2397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576cc28895db1024794b3233d9443cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle: {fileID: 1944340057382631577}
 --- !u!114 &4423721222117505603
 MonoBehaviour:
   m_ObjectHideFlags: 0

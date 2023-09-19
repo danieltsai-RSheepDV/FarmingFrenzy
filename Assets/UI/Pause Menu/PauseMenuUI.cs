@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuUI : MonoBehaviour
 {
     private Canvas canvas;
+    [SerializeField] Toggle toggle;
 
+    bool isFullScreen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -11,7 +14,8 @@ public class PauseMenuUI : MonoBehaviour
         
         ToggleSettings(false);
         
-        Screen.fullScreen = false;
+        Screen.fullScreen = isFullScreen;
+        toggle.isOn = isFullScreen;
     }
 
     public void ToggleSettings(bool b)
@@ -27,6 +31,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void ToggleFullScreen(bool screenStatus)
     {
-        Screen.fullScreen = screenStatus;
+        isFullScreen = screenStatus;
+        Screen.fullScreen = isFullScreen;
     }
 }

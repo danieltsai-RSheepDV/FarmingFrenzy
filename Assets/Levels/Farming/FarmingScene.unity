@@ -175,7 +175,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farming Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1687786601309707896, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -299,6 +300,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4196262329235066582, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dff6663914151f842bd005428046d89d, type: 3}
     - target: {fileID: 5637445404636852479, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -525,7 +530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2096922715737144205, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16281611
+      value: 16366524
       objectReference: {fileID: 0}
     - target: {fileID: 2114428782759872729, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_LocalPosition.x
