@@ -13,9 +13,12 @@ public class ItemDatabaseAsset : ScriptableObject
         public string id;
         public string displayName;        
         public Sprite icon;
+        
         public float price;
         public string desc;
 
+        public float timeToUse;
+        
         public int maxStack = Int32.MaxValue;
         public List<string> tags;
     }

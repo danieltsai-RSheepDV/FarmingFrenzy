@@ -509,23 +509,12 @@ PrefabInstance:
       addedObject: {fileID: 800631488691662625}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2295598935087844275}
-    - targetCorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
       insertIndex: 3
       addedObject: {fileID: 270662859885554000}
-    - targetCorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 1687786601309707896}
   m_SourcePrefab: {fileID: 100100000, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
 --- !u!4 &4606394145583090223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8096613603315612147, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
-  m_PrefabInstance: {fileID: 5742582370177102812}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5593795747307680217 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 148873484289622533, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
   m_PrefabInstance: {fileID: 5742582370177102812}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7421704105902220425 stripped
@@ -533,48 +522,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2976581053307656021, guid: 77a775214268a5f46bece3d9af044ef6, type: 3}
   m_PrefabInstance: {fileID: 5742582370177102812}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2295598935087844275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421704105902220425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5fa61488b2eb944bb7503232852285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PI: {fileID: -944628639613478452, guid: 6d945a63a8f78a64489d256e03c4c544, type: 3}
-  cursor: {fileID: 2391592136500255226}
-  range: 3
-  tileClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 270662859885554000}
-        m_TargetAssemblyTypeName: FarmingActionController, Assembly-CSharp
-        m_MethodName: UseItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5593795747307680217}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Use
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &270662859885554000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,17 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53e48a89c58f5f419a90dfb24226d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1687786601309707896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421704105902220425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1484b8a2ec5173489295c9e0f49eb6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   PI: {fileID: -944628639613478452, guid: 6d945a63a8f78a64489d256e03c4c544, type: 3}
-  selectedSlot: 0
+  cursor: {fileID: 2391592136500255226}
+  range: 2
+  timeToUse: 0

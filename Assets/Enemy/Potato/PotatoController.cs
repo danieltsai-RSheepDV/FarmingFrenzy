@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(PathTarget))]
 public class PotatoController : EnemyController
 {
     enum States
@@ -21,7 +22,6 @@ public class PotatoController : EnemyController
     [Space]
     [SerializeField] public float speed;
     [SerializeField] public float turnSpeed;
-    [SerializeField] private float driftDistance = 3f;
     [SerializeField] private float pauseTime = 1f;
     [SerializeField] private float knockbackAmount;
     [Space]
@@ -32,10 +32,10 @@ public class PotatoController : EnemyController
     private float timer;
     private bool initialized;
     
-    private GameObject target;
+    [SerializeField] private PathTarget pathTarget;
     private Vector3 direction;
     private float usedAngle;
-    private float distanceTravelled;
+    private float driftDistance = 3f;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -50,10 +50,13 @@ public class PotatoController : EnemyController
         anim = GetComponent<Animator>();
 
         timer = pauseTime + Random.Range(0, 1f);
+    }
+    
+    public override void Initialize()
+    {
         player = GameManager.Player;
-        house = GameObject.Find("House");
-        
-        target = house;
+        house = GameManager.House;
+        pathTarget.mTarget = house;
 
         initialized = true;
     }
@@ -69,7 +72,7 @@ public class PotatoController : EnemyController
 
         if (curState == States.ROLLING)
         {
-            if (target == null)
+            if (pathTarget.mTarget == null)
             {
                 curState = States.IDLE;
                 return;
@@ -77,25 +80,20 @@ public class PotatoController : EnemyController
             
             if (Mathf.Abs(usedAngle) < 135)
             {
-                Vector3 targetDir = (target.transform.position - transform.position).normalized;
+                Vector3 targetDir = (pathTarget.GetCurrentWayPoint() - transform.position).normalized;
                 Vector3 newDir = Vector3.RotateTowards(direction, targetDir, turnSpeed * Time.deltaTime, 0f);
-                usedAngle += Vector3.SignedAngle(newDir, direction, Vector3.forward);
+                usedAngle += Vector3.SignedAngle(direction, newDir, Vector3.forward);
                 direction = newDir;
                 
                 SetVelocity(direction * speed);
             }
             else
             {
-                if (distanceTravelled < driftDistance)
-                {
-                    distanceTravelled += rb.velocity.magnitude * Time.fixedDeltaTime;
-                }else{
+                if(Vector3.Distance(pathTarget.mTarget.transform.position, transform.position) > driftDistance){
                     curState = States.IDLE;
                     anim.SetBool("Rolling", false);
                     
                     timer = pauseTime + Random.Range(0, 1f);
-                    usedAngle = 0f;
-                    distanceTravelled = 0f;
                     
                     return;
                 }
@@ -111,26 +109,27 @@ public class PotatoController : EnemyController
                 return;
             }
             
-            if (target == house)
+            if (pathTarget.mTarget == house)
             {
-                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
+                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance && player.GetComponent<Health>().GetHealth() > 0)
                 {
-                    target = player;
+                    pathTarget.mTarget = player;
                 }
             }
-            else if(target == player)
+            else if(pathTarget.mTarget == player)
             {
-                if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance + 3)
+                if (Vector3.Distance(player.transform.position, transform.position) > detectionDistance + 10 || player.GetComponent<Health>().GetHealth() <= 0)
                 {
-                    target = house;
+                    pathTarget.mTarget = house;
                 }
             }
-            if (target == null) return;
+            if (pathTarget.mTarget == null) return;
             
             curState = States.ROLLING;
             anim.SetBool("Rolling", true);
                 
-            direction = (target.transform.position - transform.position).normalized;
+            usedAngle = 0f;
+            direction = (pathTarget.GetCurrentWayPoint() - transform.position).normalized;
         }
     }
 
@@ -155,6 +154,7 @@ public class PotatoController : EnemyController
     private void OnCollisionEnter2D(Collision2D col)
     {
         if(!initialized) return;
+        if(curState != States.ROLLING) return;
 
         Health h = col.gameObject.GetComponent<Health>();
         if (h && col.gameObject == GameManager.Player)
@@ -169,6 +169,5 @@ public class PotatoController : EnemyController
                     
         timer = pauseTime + Random.Range(0, 1f);
         usedAngle = 0f;
-        distanceTravelled = 0f;
     }
 }

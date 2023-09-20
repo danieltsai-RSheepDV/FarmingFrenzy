@@ -131,13 +131,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: timeToUse
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.03
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.61
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -175,8 +183,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farming Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1687786601309707896, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -397,6 +404,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1871095987}
     - target: {fileID: 7251186767395508205, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
+      propertyPath: house
+      value: 
+      objectReference: {fileID: 1871095989}
+    - target: {fileID: 7251186767395508205, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 149420880}
@@ -530,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2096922715737144205, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16366524
+      value: 16724596
       objectReference: {fileID: 0}
     - target: {fileID: 2114428782759872729, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_LocalPosition.x
@@ -653,9 +664,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8542059010384592783, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542059010384592783, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1128425949}
+    - target: {fileID: 8542059010384592783, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ProgressDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542059010384592783, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
+      propertyPath: onClicked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8740639126735126864, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -687,6 +710,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6332e9d63154cb14788f4194b9b97af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1871095989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5926133135518943251, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
+  m_PrefabInstance: {fileID: 1871095986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

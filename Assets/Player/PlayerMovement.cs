@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction moveAction;
     private InputAction mouseAction;
 
-    [SerializeField] private SpriteRenderer sp;
+    [SerializeField] public SpriteRenderer sp;
 
     [SerializeField] public float speed;
     [SerializeField] public float accel;

@@ -26,54 +26,65 @@ public class PeaController : EnemyController
     [SerializeField] public float decel;
     [SerializeField] public float velPower;
     
-    private PathTarget pathTarget;
+    [SerializeField] private PathTarget pathTarget;
     private float timer;
+    private bool initialized;
     
     private Rigidbody2D rb;
     private GameObject player;
-    //TODO: Replace with house
-    private GameObject house = null;
+    private GameObject house;
     
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        player = GameManager.Player;
-        house = GameObject.Find("House");
+    }
 
-        pathTarget = GetComponent<PathTarget>();
+    public override void Initialize()
+    {
+        player = GameManager.Player;
+        house = GameManager.House;
+        
         pathTarget.mTarget = house;
+
+        initialized = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(pathTarget.mTarget);
+        if (!initialized) return;
+        
         if(pathTarget.mTarget != null){
             sp.flipX = pathTarget.transform.position.x > transform.position.x;
         }
         
         if (pathTarget.mTarget == house)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance)
+            if (Vector3.Distance(player.transform.position, transform.position) < detectionDistance && player.GetComponent<Health>().GetHealth() > 0)
             {
                 pathTarget.mTarget = player;
             }
         }
         else if(pathTarget.mTarget == player)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) > detectionDistance + 3)
+            if (Vector3.Distance(player.transform.position, transform.position) > detectionDistance + 3 || player.GetComponent<Health>().GetHealth() <= 0)
             {
                 pathTarget.mTarget = house;
             }
         }
-        if (pathTarget.mTarget == null) return;
+
+        if (pathTarget.mTarget == null)
+        {
+            pathTarget.mTarget = house;
+            return;
+        }
 
         if (curState == States.CHASING)
         {
-            
-            Vector3 targetDir = (pathTarget.mTarget.transform.position - transform.position).normalized;
+            Vector3 targetDir = (pathTarget.GetCurrentWayPoint() - transform.position).normalized;
             SetVelocity(targetDir * speed);
-
+            
             if (Vector3.Distance(pathTarget.mTarget.transform.position, transform.position) < fireDistance)
             {
                 curState = States.SHOOTING;

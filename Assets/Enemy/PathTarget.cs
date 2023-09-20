@@ -6,17 +6,29 @@ using UnityEngine;
 public class PathTarget : MonoBehaviour
 {
     //Constants
-    private const float NextWaypointRadius = 0.2f;
+    private const float NextWaypointRadius = 1f;
     
     // Fields
-    [NonSerialized] public GameObject mTarget;
+    public GameObject mTarget
+    {
+        get
+        {
+            return target;
+        }
+        set
+        {
+            target = value;
+            UpdatePath();
+        }
+    }
+    private GameObject target;
     
     // Astar Variables
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
     
-    void Start()
+    void Awake()
     {
         seeker = GetComponent<Seeker>();
     }
@@ -24,24 +36,19 @@ public class PathTarget : MonoBehaviour
     void Update()
     {
         if (mTarget == null) return;
-        
+
         if (path == null) return;
 
         if (currentWaypoint >= path.vectorPath.Count) return;
             
-        float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(transform.position, GetCurrentWayPoint());
 
         if (distance < NextWaypointRadius)
         {
-            currentWaypoint++;
+            UpdatePath();
         }
     }
 
-    private void OnEnable()
-    {
-        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
-    }
-    
     private void UpdatePath() 
     {
         if (mTarget == null) return;
@@ -51,7 +58,16 @@ public class PathTarget : MonoBehaviour
         seeker.StartPath(transform.position, mTarget.transform.position, p =>
         {
             path = p;
-            currentWaypoint = 0;
+            currentWaypoint = 1;
         });
+    }
+    
+    public Vector3 GetCurrentWayPoint()
+    {
+        if (path == null)
+        {
+            return transform.position;
+        }
+        return path.vectorPath[currentWaypoint];
     }
 }

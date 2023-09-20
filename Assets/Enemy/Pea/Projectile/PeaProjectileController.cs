@@ -32,7 +32,7 @@ public class PeaProjectileController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         Health h = col.gameObject.GetComponent<Health>();
-        if (h && col.gameObject == GameManager.Player)
+        if (h && col.gameObject.CompareTag("Player"))
         {
             h.Damage(damage);
             Destroy(gameObject);

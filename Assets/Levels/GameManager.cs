@@ -10,11 +10,12 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(ItemDatabase))]
 public class GameManager : MonoBehaviour
 {
-    private float saveVersion;
     private SaveVersion _saveVersion;
     
     [SerializeField] private GameObject player;
     public static GameObject Player;
+    [SerializeField] private GameObject house;
+    public static GameObject House;
     [SerializeField] private FarmManager fm;
     public static FarmManager FarmManager;
     [SerializeField] private StructureManager sm;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI day;
     [SerializeField] private bool summonMonsters;
 
-    private int dayCount = 0;
+    private int dayCount = 1;
 
     private void Awake()
     {
@@ -35,20 +36,18 @@ public class GameManager : MonoBehaviour
         Player = player;
         FarmManager = fm;
         StructureManager = sm;
+        House = house;
         ItemDatabase = GetComponent<ItemDatabase>();
     }
 
     private void Start()
     {
-        saveVersion = _saveVersion.saveVersion;
-        
-        SaveData s =  SaveManager.Load(saveVersion);
+        SaveData s =  SaveManager.Load(_saveVersion.saveVersion);
         if (s != null)
         {
             FarmManager.tiles = s.farmTiles;
             StructureManager.tiles = s.structureTiles;
             dayCount = s.dayCount;
-            day.text = "Day " + dayCount;
             Player.GetComponent<InventoryManager>().items = s.playerItems;
             Player.GetComponent<InventoryManager>().money = s.money;
             
@@ -62,6 +61,7 @@ public class GameManager : MonoBehaviour
                 HarvestStatsUI.earnings = earnings;
             }
         }
+        day.text = "Day " + dayCount;
         
     }
 
@@ -80,12 +80,23 @@ public class GameManager : MonoBehaviour
         dayCount++;
         FarmManager.UpdateTileMap();
         StructureManager.UpdateTileMap();
-        SaveManager.Save(saveVersion, FarmManager, StructureManager, player.GetComponent<InventoryManager>(), dayCount);
+        
+        if (FarmManager.shouldSummonMonsters)
+        {
+            SaveManager.SaveBackup(_saveVersion.saveVersion);
+        }
+        
+        SaveManager.Save(_saveVersion.saveVersion, FarmManager, StructureManager, player.GetComponent<InventoryManager>(), dayCount);
         SceneManager.LoadScene(FarmManager.shouldSummonMonsters ? "HarvestScene" : "FarmingScene");
     }
     
     public void ChangeScene(string s)
     {
         SceneManager.LoadScene(s);
+    }
+
+    public void Revert()
+    {
+        SaveManager.RevertToBackup(_saveVersion.saveVersion);
     }
 }

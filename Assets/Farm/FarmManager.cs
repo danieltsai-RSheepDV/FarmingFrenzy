@@ -116,7 +116,9 @@ public class FarmManager : MonoBehaviour
                 CropDatabaseAsset.CropData cropData = CropDatabase[ti.cropId];
                 
                 GameObject ob = Instantiate(cropData.monsterPrefab);
-                ob.transform.position = TileClicker.TileToWorldPos(ti.position);
+                ob.transform.position = FarmingActionController.TileToWorldPos(ti.position);
+                ob.GetComponent<EnemyController>().Initialize();
+
                 toDelete.Add(ti);
 
                 earningCounter += Mathf.CeilToInt(ItemDatabase[cropData.seedId].price * 1.5f);
