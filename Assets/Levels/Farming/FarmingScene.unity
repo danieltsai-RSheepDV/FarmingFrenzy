@@ -131,14 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: timeToUse
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2295598935087844275, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
-      propertyPath: tileClicked.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4606394145583090223, guid: ca34348bc353e8643864ca78b7269cbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -541,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2096922715737144205, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16724596
+      value: 16824200
       objectReference: {fileID: 0}
     - target: {fileID: 2114428782759872729, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_LocalPosition.x
