@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField] Toggle toggle;
 
     bool isFullScreen = false;
+
     // Start is called before the first frame update
     void Start()
     {

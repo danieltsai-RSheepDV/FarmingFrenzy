@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour
 {
+    // SFX
+    [SerializeField] SoundManager SoundManager;
+
     const int INVENTORY_SLOTS = 6;
     
     [SerializeField] public InputActionAsset PI;
@@ -37,6 +40,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        // sound
         ItemDatabase = GameManager.ItemDatabase;
         
         item1Action = PI.FindAction("Item1");
@@ -77,21 +81,31 @@ public class InventoryManager : MonoBehaviour
         if (item1Action.triggered)
         {
             selectedSlot = 0;
+            SoundManager.PlayClickSound();
         }else if (item2Action.triggered)
         {
             selectedSlot = 1;
-        }else if (item3Action.triggered)
+            SoundManager.PlayClickSound();
+        }
+        else if (item3Action.triggered)
         {
             selectedSlot = 2;
-        }else if (item4Action.triggered)
+            SoundManager.PlayClickSound();
+        }
+        else if (item4Action.triggered)
         {
             selectedSlot = 3;
-        }else if (item5Action.triggered)
+            SoundManager.PlayClickSound();
+        }
+        else if (item5Action.triggered)
         {
             selectedSlot = 4;
-        }else if (item6Action.triggered)
+            SoundManager.PlayClickSound();
+        }
+        else if (item6Action.triggered)
         {
             selectedSlot = 5;
+            SoundManager.PlayClickSound();
         }
     }
 

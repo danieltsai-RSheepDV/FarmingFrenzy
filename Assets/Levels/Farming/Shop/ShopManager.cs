@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    // sfx
+    [SerializeField] SoundManager SoundManager;
+    
+    
     // argument null exceptions when game object selected:
     // https://forum.unity.com/threads/argumentnullexception-value-cannot-be-null-parameter-name-_unity_self.1431901/
     InventoryManager invManager;
@@ -67,5 +71,6 @@ public class ShopManager : MonoBehaviour
     public void ToggleShop(bool b)
     {
         canvas.enabled = b;
+        if (b) SoundManager.PlayUIOpenSound(); // if opening shop
     }
 }

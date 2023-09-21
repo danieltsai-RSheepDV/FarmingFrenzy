@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private StructureManager sm;
     public static StructureManager StructureManager;
     public static ItemDatabase ItemDatabase;
+    
+    // sound manager
+    [SerializeField] private SoundManager soundM;
+    public static SoundManager SoundManager;
 
     [SerializeField] private HarvestStatsUI HarvestStatsUI;
     [SerializeField] private Animator fader;
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
         StructureManager = sm;
         House = house;
         ItemDatabase = GetComponent<ItemDatabase>();
+
+        SoundManager = soundM; // sound manager
     }
 
     private void Start()
