@@ -33,10 +33,23 @@ public class PeaController : EnemyController
     private Rigidbody2D rb;
     private GameObject player;
     private GameObject house;
+
+    // sfx
+    [Space]
+    [SerializeField] SoundManager SoundManager;
+    AudioSource audioSource;
     
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        // sfx
+        audioSource = GetComponent<AudioSource>();
+
+        if(!SoundManager)
+        {
+            SoundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();
+        }
     }
 
     public override void Initialize()
@@ -99,6 +112,7 @@ public class PeaController : EnemyController
                 GameObject proj = Instantiate(peaProjectile);
                 proj.transform.position = transform.position;
                 proj.GetComponent<PeaProjectileController>().Setup(pathTarget.mTarget);
+                SoundManager.PlayPeaShootSound(audioSource);
 
                 timer = timePerShot;
             }

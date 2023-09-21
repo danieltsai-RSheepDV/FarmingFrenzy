@@ -1176,7 +1176,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6479493820578395553}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: ButtonClickSound
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1474,7 +1474,7 @@ GameObject:
   - component: {fileID: 8180781114404068984}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: Sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1511,7 +1511,14 @@ MonoBehaviour:
   uiAudioClips:
   - {fileID: 8300000, guid: 82495a0fcc5223640a9a176668828a98, type: 3}
   - {fileID: 8300000, guid: bee4c072768c5744493f4a77526baa0d, type: 3}
-  actionClips: []
+  - {fileID: 8300000, guid: cf62d06f0b3da204d94d4e18e385982f, type: 3}
+  actionClips:
+  - {fileID: 8300000, guid: bcb18d78815c2044cbfee9415c82eb60, type: 3}
+  - {fileID: 8300000, guid: 2205de3fe9ee4f1468ac430dec456641, type: 3}
+  - {fileID: 8300000, guid: 0bb89cc16da6b574e880196cae1cb6fd, type: 3}
+  enemyClips:
+  - {fileID: 8300000, guid: c136e16a0dd8f2847aeb3dfcaa6d60ea, type: 3}
+  - {fileID: 8300000, guid: 7b329f644e2159a418ae927ee21fe376, type: 3}
 --- !u!82 &7128691564890685221
 AudioSource:
   m_ObjectHideFlags: 0

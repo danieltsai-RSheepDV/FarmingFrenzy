@@ -13,6 +13,9 @@ public class HarvestStatsUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI earningTextUI;
 
+    //sfx
+    SoundManager SoundManager;
+
     public int enemyCounter
     {
         get
@@ -37,6 +40,8 @@ public class HarvestStatsUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();
+        
         Animator = GetComponent<Animator>();
         
         ToggleStats(false);
@@ -51,5 +56,7 @@ public class HarvestStatsUI : MonoBehaviour
         
         earningTextUI.text = "You earned $" + modifiedEarnings + "!\n" +
                              multiplier + "x multiplier!";
+
+        if (b) SoundManager.PlaySuccessSound();
     }
 }

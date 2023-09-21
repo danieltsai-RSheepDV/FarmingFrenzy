@@ -42,7 +42,12 @@ public class PotatoController : EnemyController
     //TODO: Replace with house
     private GameObject house = null;
     private Animator anim;
-    
+
+    // sfx
+    [Space]
+    [SerializeField] SoundManager SoundManager;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,16 @@ public class PotatoController : EnemyController
         anim = GetComponent<Animator>();
 
         timer = pauseTime + Random.Range(0, 1f);
+
+
+
+        // sfx
+        audioSource = GetComponent<AudioSource>();
+
+        if (!SoundManager)
+        {
+            SoundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();
+        }
     }
     
     public override void Initialize()
@@ -92,7 +107,8 @@ public class PotatoController : EnemyController
                 if(Vector3.Distance(pathTarget.mTarget.transform.position, transform.position) > driftDistance){
                     curState = States.IDLE;
                     anim.SetBool("Rolling", false);
-                    
+                    SoundManager.PlayPotatoSound(audioSource);
+
                     timer = pauseTime + Random.Range(0, 1f);
                     
                     return;

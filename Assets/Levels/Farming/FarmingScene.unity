@@ -387,10 +387,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6479493820578395553, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
-      propertyPath: uiAudioClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 15263a703efcb134e90b56c5d58742a6, type: 3}
     - target: {fileID: 6733058380642106165, guid: c465fb24a08615840a1b1ac1d03a59c4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -556,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2096922715737144205, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 77381970
+      value: 78082184
       objectReference: {fileID: 0}
     - target: {fileID: 2114428782759872729, guid: dcf92ea040deb2e40b073e4818ea0625, type: 3}
       propertyPath: m_LocalPosition.x

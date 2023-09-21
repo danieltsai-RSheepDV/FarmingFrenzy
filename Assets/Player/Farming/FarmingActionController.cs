@@ -31,6 +31,11 @@ public class FarmingActionController : MonoBehaviour
     private float timer;
     private bool taskFinished;
 
+
+    // sfx
+    SoundManager SoundManager;
+    AudioSource audioSource;
+
     private void Start()
     {
         farmManager = GameManager.FarmManager;
@@ -43,6 +48,11 @@ public class FarmingActionController : MonoBehaviour
         
         useAction = PI.FindAction("Use");
         mouseAction = PI.FindAction("Mouse");
+
+
+        // sfx
+        SoundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -64,7 +74,9 @@ public class FarmingActionController : MonoBehaviour
 
         if (useAction.triggered)
         {
-            timeToUse = itemDatabase[inventoryManager.GetSelectedItem().itemId].timeToUse;
+            try { 
+                timeToUse = itemDatabase[inventoryManager.GetSelectedItem().itemId].timeToUse;
+            } catch { }
         }
         
         if (useAction.inProgress && inRange)
@@ -84,6 +96,9 @@ public class FarmingActionController : MonoBehaviour
                 taskFinished = true;
                 
                 cursor.transform.localScale = cellSize * Vector3.one;
+
+                // play placed sound
+                SoundManager.PlayPlacedSound(audioSource);
             }
         }
         else
