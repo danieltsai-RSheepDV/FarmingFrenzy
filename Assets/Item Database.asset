@@ -17,7 +17,7 @@ MonoBehaviour:
     displayName: Potato Seeds
     icon: {fileID: -25254898, guid: 715132378aabbfb4384c3a9b480901d5, type: 3}
     price: 1
-    desc: Yummiest lumpy bowling ball.
+    desc: (2 days) Yummiest lumpy bowling ball.
     timeToUse: 0
     maxStack: 2147483647
     tags:
@@ -25,8 +25,8 @@ MonoBehaviour:
   - id: Item_PeaSeeds
     displayName: Pea Seeds
     icon: {fileID: -566119265, guid: b15d5ca393dccc241af988f6b80ab511, type: 3}
-    price: 1
-    desc: Peas in a pod. Until they are launched.
+    price: 2
+    desc: (3 days) Peas in a pod. Until they are launched.
     timeToUse: 0
     maxStack: 2147483647
     tags:
