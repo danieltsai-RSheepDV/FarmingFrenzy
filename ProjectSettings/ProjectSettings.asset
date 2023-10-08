@@ -646,7 +646,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -666,11 +672,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 09b122e8-97dd-40b0-ac7e-3a7a349f986f
+  cloudProjectId: bf09192a-473e-4d30-83c8-33c459977927
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: FarmingFrenzy
-  organizationId: gamecrafti
+  organizationId: fortunatyche
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

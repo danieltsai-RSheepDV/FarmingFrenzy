@@ -14,9 +14,8 @@ public class PauseMenuUI : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         
-        ToggleSettings(false);
-        
-        Screen.fullScreen = isFullScreen;
+        // 0 for windowed, 1 for full screen
+        isFullScreen = Screen.fullScreen; // set screenstate to match current screen state
         toggle.isOn = isFullScreen;
     }
 
